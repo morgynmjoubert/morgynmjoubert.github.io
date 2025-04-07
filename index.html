@@ -6,9 +6,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/animate.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"
             integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/css/libs/animate.min.css" rel="stylesheet">
+
+
     <script>
 		document.addEventListener('DOMContentLoaded', function (event) {
 
@@ -36,6 +43,42 @@
 					iso.arrange({filter: filterValue});
 				}
 			});
+		});
+    </script>
+    <script>
+		document.addEventListener('DOMContentLoaded', () => {
+
+			// Get all "navbar-burger" elements
+			const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+			// Add a click event on each of them
+			$navbarBurgers.forEach(el => {
+				el.addEventListener('click', () => {
+
+					// Get the target from the "data-target" attribute
+					const target = el.dataset.target;
+					const $target = document.getElementById(target);
+
+					// Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+					el.classList.toggle('is-active');
+					$target.classList.toggle('is-active');
+					// el.classList.toggle('animate__animated animate__fadeInLeft');
+					$target.classList.toggle('animate__animated');
+					$target.classList.toggle('animate__fadeInLeft');
+
+				});
+			});
+
+			const $navbarMenu = Array.prototype.slice.call(document.querySelectorAll('.navbar-menu'), 0);
+			$navbarMenu.forEach(el => {
+				el.addEventListener('click', () => {
+					const target = el.dataset.target;
+					const $target = document.getElementById(target);
+					el.classList.remove('is-active');
+					$target.classList.remove('is-active');
+				})
+			});
+
 		});
     </script>
     <script>
@@ -87,25 +130,67 @@
 		.isotope-filter .cell {
 			padding: 0.5rem;
 		}
+
+		.is-fixed {
+			position: fixed !important;
+		}
+
+		.is-z-index-1 {
+			position: relative;
+			z-index: 1 !important;
+		}
+
+		@media screen and (max-width: 768px) {
+			.is-flex-direction-row-reverse-mobile {
+				flex-direction: row-reverse !important;
+			}
+
+			.is-flex-direction-column-reverse-mobile {
+				flex-direction: column-reverse !important;
+			}
+
+			.is-fixed-mobile {
+				position: fixed !important;
+			}
+
+			.has-top-padding-mobile {
+				padding-top: 52px;
+				margin-top: -52px;
+			}
+
+			.is-full-mobile {
+				width: 100vw;
+				height: 100vh;
+			}
+
+			.has-background-primary-mobile {
+				background-color: hsl(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-l)) !important;
+			}
+		}
     </style>
+    <script>
+		new WOW().init();
+    </script>
 </head>
 <body>
 <section id="top" class="hero is-black is-fullheight">
     <div class="hero-head">
-        <nav class="navbar">
+        <nav class="navbar is-fixed-mobile ml-3">
             <div class="container">
                 <div class="navbar-brand">
-                    <a class="navbar-item">
-                        <img src="https://bulma.io/assets/images/bulma-type-white.png" alt="Logo"/>
-                    </a>
-                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+                    <!--                    <a class="navbar-item">-->
+                    <!--                        <img src="https://bulma.io/assets/images/bulma-type-white.png" alt="Logo"/>-->
+                    <!--                    </a>-->
+                    <span class="navbar-burger has-background-dark ml-2 is-z-index-1"
+                          data-target="navbarMenuHeroA">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
           </span>
                 </div>
-                <div id="navbarMenuHeroA" class="navbar-menu">
+                <div id="navbarMenuHeroA"
+                     class="navbar-menu has-background-primary-mobile is-fixed has-background-black is-full-mobile has-top-padding-mobile">
                     <div class="navbar-end">
                         <a class="navbar-item is-active" href="#top"> Home </a>
                         <a class="navbar-item" href="#about"> About </a>
@@ -126,34 +211,35 @@
     </div>
     <div class="hero-body">
         <div class="container h-card vcard">
-            <div class="columns is-mobile is-centered">
+            <div class="columns is-centered">
                 <div class="column column is-four-fifths-widescreen is-two-thirds-fullhd">
-                    <div class="columns">
+                    <div class="columns is-flex-mobile is-flex-direction-column-reverse-mobile">
                         <div class="column">
-                            <p class="title is-size-1 has-text-weight-medium"><span
+                            <p class="title is-size-1 has-text-weight-medium wow fadeInUp has-text-centered-mobile"><span
                                     class="p-given-name given-name">Morgyn</span> <span
                                     class="p-additional-name">J.</span>
                                 <span
                                         class="p-family-name family-name">Joubert</span></p>
-                            <p class="subtitle is-size-3 mt-1 has-text-weight-light p-job-title title">
+                            <p class="subtitle is-size-3 mt-1 has-text-weight-light p-job-title title wow fadeInUp has-text-centered-mobile"
+                               data-wow-delay="0.2s">
                                 Digital Storyteller and Content Strategist
                             </p>
-                            <ul class="mt-6 has-text-left">
-                                <li class="mt-2">
+                            <ul class="mt-6 has-text-left has-text-centered-mobile">
+                                <li class="mt-2 wow fadeInUp" data-wow-delay="0.4s">
                                     <a href="https://morgynmjoubert.github.io/"
                                        class="u-url url has-text-primary"><span
                                             class="icon"><i class="fas fa-home"></i></span>
                                         morgynmjoubert.github.io</a>
                                 </li>
-                                <li class="mt-2">
+                                <li class="mt-2 wow fadeInUp" data-wow-delay="0.6s">
                                     <a href="mailto:me@example.com"
                                        class="u-email email has-text-primary"><span
                                             class="icon"><i class="fas fa-envelope"></i></span>
                                         morgynmjoubert@example.com</a>
                                 </li>
-                                <li class="mt-2 level">
+                                <li class="mt-2 level wow fadeInUp" data-wow-delay="0.8s">
                                     <ul class="level-left">
-                                        <li class="level-item">
+                                        <li class="level-item wow fadeInUp">
 
                                             <a href="https://social.example.com/morgynmjoubert"
                                                class="has-text-primary"><span
@@ -161,7 +247,7 @@
                                                     class="fas fa-thumbs-up"></i></span> <span
                                                     class="p-nickname">morgynmjoubert</span></a>
                                         </li>
-                                        <li class="level-item">
+                                        <li class="level-item wow fadeInUp">
                                             <a href="https://www.linkedin.com/in/morgyn-joubert-052665169"
                                                class="has-text-primary"><span
                                                     class="p-nickname"><span class="icon"><i
@@ -172,7 +258,7 @@
                             </ul>
                         </div>
                         <div class="column">
-                            <figure class="has-text-right has-ratio-3by4">
+                            <figure class="has-text-right has-ratio-3by4 wow fadeInUp">
                                 <img class="u-photo" src="./Morgyn_Joubert600.jpg"/>
                             </figure>
                         </div>
@@ -185,20 +271,21 @@
 <section id="about" class="section">
     <div class="container">
         <div class="columns">
-            <figure class="column has-ratio-3by4 image">
+            <figure class="column has-ratio-3by4 image wow fadeInUp">
                 <img class="u-photo" src="./Morgyn_Joubert600.jpg"/>
             </figure>
             <div class="column">
                 <div class="about mb-5 mt-8">
                     <h2 class="title">About me</h2>
-                    <p class="has-text-weight-light mb-2 is-size-5 p-role role">I’m a
+                    <p class="has-text-weight-light mb-2 is-size-5 p-role role wow fadeInUp">I’m a
                         multidisciplinary digital storyteller and analytics-driven content
                         strategist with a strong foundation in journalism, UX, and data science.
                         With experience spanning newsroom production, SEO, audience engagement, and
                         user research, I specialize in crafting compelling narratives that drive
                         measurable results. My strength is blending editorial instincts with data
                         insights to design content strategies that inform, inspire, and engage.</p>
-                    <p class="has-text-weight-light mb-2 is-size-5 p-role role">I’ve led
+                    <p class="has-text-weight-light mb-2 is-size-5 p-role role wow fadeInUp">I’ve
+                        led
                         cross-functional teams, mentored junior producers, and optimized digital
                         platforms using tools like Google Analytics, Tableau, and Hotjar. I’m
                         passionate about enhancing user experiences through innovation,
@@ -208,52 +295,52 @@
                         mission-driven environments.</p>
                 </div>
                 <div class="tags">
-                    <span class="tag is-medium is-primary">Tableau</span>
-                    <span class="tag is-medium is-primary">Adobe Target</span>
-                    <span class="tag is-medium is-primary">SEMrush</span>
-                    <span class="tag is-medium is-primary">Hotjar</span>
-                    <span class="tag is-medium is-primary">Google Analytics</span>
-                    <span class="tag is-medium is-primary">Chartbeat</span>
-                    <span class="tag is-medium is-primary">Parsely</span>
-                    <span class="tag is-medium is-link">HTML</span>
-                    <span class="tag is-medium is-link">Javascript</span>
-                    <span class="tag is-medium is-link">Python</span>
-                    <span class="tag is-medium is-link">R</span>
-                    <span class="tag is-medium is-link">SQL</span>
-                    <span class="tag is-medium is-info">WordPress</span>
-                    <span class="tag is-medium is-info">ARC</span>
-                    <span class="tag is-medium is-info">CMS</span>
-                    <span class="tag is-medium is-info">Hubspot</span>
-                    <span class="tag is-medium is-info">Mailchimp</span>
-                    <span class="tag is-medium is-info">Gutenberg Blocks</span>
-                    <span class="tag is-medium is-success">Adobe Creative Suite</span>
-                    <span class="tag is-medium is-success">Final Cut Pro</span>
-                    <span class="tag is-medium is-success">Figma</span>
-                    <span class="tag is-medium is-success">Canva</span>
-                    <span class="tag is-medium is-success">Avid</span>
-                    <span class="tag is-medium is-warning">Meta</span>
-                    <span class="tag is-medium is-warning">X (Twitter)</span>
-                    <span class="tag is-medium is-warning">TikTok</span>
-                    <span class="tag is-medium is-warning">YouTube</span>
-                    <span class="tag is-medium is-warning">LinkedIn</span>
-                    <span class="tag is-medium is-warning">BlueSky</span>
-                    <span class="tag is-medium is-warning">Social News Desk</span>
-                    <span class="tag is-medium is-warning">True Anthem</span>
-                    <span class="tag is-medium is-warning">Sprinklr</span>
-                    <span class="tag is-medium is-danger">Jira</span>
-                    <span class="tag is-medium is-danger">Confluence</span>
-                    <span class="tag is-medium is-danger">Trello</span>
-                    <span class="tag is-medium is-danger">Monday</span>
-                    <span class="tag is-medium is-danger">Atlas</span>
-                    <span class="tag is-medium is-danger">Microsoft Office Suite</span>
-                    <span class="tag is-medium is-info">UX Research</span>
-                    <span class="tag is-medium is-info">Content Strategy</span>
-                    <span class="tag is-medium is-info">SEO/SEM</span>
-                    <span class="tag is-medium is-info">Newsletter Management</span>
-                    <span class="tag is-medium is-info">Interactive Storytelling</span>
-                    <span class="tag is-medium is-link">English</span>
-                    <span class="tag is-medium is-link">Basic proficiency in Python</span>
-                    <span class="tag is-medium is-link">Basic proficiency in R</span>
+                    <span class="tag is-medium is-primary wow fadeInUp">Tableau</span>
+                    <span class="tag is-medium is-primary wow fadeInUp">Adobe Target</span>
+                    <span class="tag is-medium is-primary wow fadeInUp">SEMrush</span>
+                    <span class="tag is-medium is-primary wow fadeInUp">Hotjar</span>
+                    <span class="tag is-medium is-primary wow fadeInUp">Google Analytics</span>
+                    <span class="tag is-medium is-primary wow fadeInUp">Chartbeat</span>
+                    <span class="tag is-medium is-primary wow fadeInUp">Parsely</span>
+                    <span class="tag is-medium is-link wow fadeInUp">HTML</span>
+                    <span class="tag is-medium is-link wow fadeInUp">Javascript</span>
+                    <span class="tag is-medium is-link wow fadeInUp">Python</span>
+                    <span class="tag is-medium is-link wow fadeInUp">R</span>
+                    <span class="tag is-medium is-link wow fadeInUp">SQL</span>
+                    <span class="tag is-medium is-info wow fadeInUp">WordPress</span>
+                    <span class="tag is-medium is-info wow fadeInUp">ARC</span>
+                    <span class="tag is-medium is-info wow fadeInUp">CMS</span>
+                    <span class="tag is-medium is-info wow fadeInUp">Hubspot</span>
+                    <span class="tag is-medium is-info wow fadeInUp">Mailchimp</span>
+                    <span class="tag is-medium is-info wow fadeInUp">Gutenberg Blocks</span>
+                    <span class="tag is-medium is-success wow fadeInUp">Adobe Creative Suite</span>
+                    <span class="tag is-medium is-success wow fadeInUp">Final Cut Pro</span>
+                    <span class="tag is-medium is-success wow fadeInUp">Figma</span>
+                    <span class="tag is-medium is-success wow fadeInUp">Canva</span>
+                    <span class="tag is-medium is-success wow fadeInUp">Avid</span>
+                    <span class="tag is-medium is-warning wow fadeInUp">Meta</span>
+                    <span class="tag is-medium is-warning wow fadeInUp">X (Twitter)</span>
+                    <span class="tag is-medium is-warning wow fadeInUp">TikTok</span>
+                    <span class="tag is-medium is-warning wow fadeInUp">YouTube</span>
+                    <span class="tag is-medium is-warning wow fadeInUp">LinkedIn</span>
+                    <span class="tag is-medium is-warning wow fadeInUp">BlueSky</span>
+                    <span class="tag is-medium is-warning wow fadeInUp">Social News Desk</span>
+                    <span class="tag is-medium is-warning wow fadeInUp">True Anthem</span>
+                    <span class="tag is-medium is-warning wow fadeInUp">Sprinklr</span>
+                    <span class="tag is-medium is-danger wow fadeInUp">Jira</span>
+                    <span class="tag is-medium is-danger wow fadeInUp">Confluence</span>
+                    <span class="tag is-medium is-danger wow fadeInUp">Trello</span>
+                    <span class="tag is-medium is-danger wow fadeInUp">Monday</span>
+                    <span class="tag is-medium is-danger wow fadeInUp">Atlas</span>
+                    <span class="tag is-medium is-danger wow fadeInUp">Microsoft Office Suite</span>
+                    <span class="tag is-medium is-info wow fadeInUp">UX Research</span>
+                    <span class="tag is-medium is-info wow fadeInUp">Content Strategy</span>
+                    <span class="tag is-medium is-info wow fadeInUp">SEO/SEM</span>
+                    <span class="tag is-medium is-info wow fadeInUp">Newsletter Management</span>
+                    <span class="tag is-medium is-info wow fadeInUp">Interactive Storytelling</span>
+                    <span class="tag is-medium is-link wow fadeInUp">English</span>
+                    <span class="tag is-medium is-link wow fadeInUp">Basic proficiency in Python</span>
+                    <span class="tag is-medium is-link wow fadeInUp">Basic proficiency in R</span>
                 </div>
             </div>
         </div>
@@ -264,9 +351,10 @@
         <h2 class="title">What I do</h2>
         <div class="columns">
             <div class="column">
-                <div class="card has-background-grey-darker">
+                <div class="card has-background-grey-darker wow fadeInUp">
                     <div class="card-content">
-                        <div class="is-size-3 has-text-primary has-text-centered mb-3"><i class="fa-solid fa-hexagon-nodes"></i></div>
+                        <div class="is-size-3 has-text-primary has-text-centered mb-3"><i
+                                class="fa-solid fa-hexagon-nodes"></i></div>
                         <h3 class="title is-size-4 has-text-weight-normal">Digital Strategy &
                             Leadership</h3>
                         <p>With a proven track record leading cross-functional teams, I drive
@@ -280,7 +368,7 @@
                 </div>
             </div>
             <div class="column">
-                <div class="card has-background-grey-darker">
+                <div class="card has-background-grey-darker wow fadeInUp">
                     <div class="card-content">
                         <div class="is-size-3 has-text-info has-text-centered mb-3"><i
                                 class="fa-solid fa-brain"></i>
@@ -298,7 +386,7 @@
                 </div>
             </div>
             <div class="column">
-                <div class="card has-background-grey-darker">
+                <div class="card has-background-grey-darker wow fadeInUp">
                     <div class="card-content">
                         <div class="is-size-3 has-text-warning has-text-centered mb-3"><i
                                 class="fa-solid fa-ranking-star"></i></div>
@@ -322,7 +410,7 @@
         <div class="columns">
             <div class="column">
                 <h3 class="title">Education</h3>
-                <div class="card has-background-grey-darker">
+                <div class="card has-background-grey-darker wow fadeInUp">
                     <div class="card-content">
                         <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Bachelor's degree, Sociology and Journalism,</span>
                             <span class="has-text-primary is-size-4 has-text-weight-light">University of Massachusetts Lowell</span>
@@ -340,7 +428,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-content has-background-grey-darker">
+                    <div class="card-content has-background-grey-darker wow fadeInUp">
                         <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Master of Professional Studies, Analytics,</span>
                             <span class="has-text-primary is-size-4 has-text-weight-light">Northeastern University</span>
                         </h4>
@@ -359,7 +447,7 @@
             </div>
             <div class="column">
                 <h3 class="title">Work Experience</h3>
-                <div class="card has-background-grey-darker">
+                <div class="card has-background-grey-darker wow fadeInUp">
                     <div class="card-content">
                         <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Senior Digital Media Producer,</span>
                             <span class="has-text-primary is-size-4 has-text-weight-light">Northeastern University</span>
@@ -385,7 +473,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card has-background-grey-darker">
+                <div class="card has-background-grey-darker wow fadeInUp">
                     <div class="card-content">
                         <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Assignment Desk Editor,</span>
                             <span class="has-text-primary is-size-4 has-text-weight-light">7 News, WHDH-TV</span>
@@ -399,7 +487,7 @@
                             producers in all aspects of the show.</p>
                     </div>
                 </div>
-                <div class="card has-background-grey-darker">
+                <div class="card has-background-grey-darker wow fadeInUp">
                     <div class="card-content">
                         <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Digital Content Producer,</span>
                             <span class="has-text-primary is-size-4 has-text-weight-light">WFXT Boston 25 News</span>
@@ -407,7 +495,7 @@
                         <p><small class="has-text-info">2021 &ndash; 2022</small></p>
                     </div>
                 </div>
-                <div class="card has-background-grey-darker">
+                <div class="card has-background-grey-darker wow fadeInUp">
                     <div class="card-content">
                         <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Digital Content Producer,</span>
                             <span class="has-text-primary is-size-4 has-text-weight-light">Meredith Corporation WGGB/WSHM</span>
@@ -446,7 +534,7 @@
         </nav>
         <div class="container isotope-filter grid is-col-min-13">
             <div class="cell air-bending">
-                <div class="card has-background-light js-modal-trigger"
+                <div class="card has-background-light js-modal-trigger wow fadeInUp"
                      data-target="modal-air-bending" aria-haspopup="true">
                     <div class="card-image">
                         <figure class="image has-ratio-3by4">
@@ -462,7 +550,7 @@
             </div>
 
             <div class="cell fire-bending">
-                <div class="card has-background-light js-modal-trigger"
+                <div class="card has-background-light js-modal-trigger wow fadeInUp"
                      data-target="modal-fire-bending" aria-haspopup="true">
                     <div class="card-image">
                         <figure class="image has-ratio-3by4">
@@ -477,7 +565,7 @@
                 </div>
             </div>
             <div class="cell earth-bending">
-                <div class="card has-background-light js-modal-trigger"
+                <div class="card has-background-light js-modal-trigger wow fadeInUp"
                      data-target="modal-earth-bending" aria-haspopup="true">
                     <div class="card-image">
                         <figure class="image has-ratio-3by4">
@@ -493,7 +581,7 @@
             </div>
 
             <div class="cell water-bending">
-                <div class="card has-background-light js-modal-trigger"
+                <div class="card has-background-light js-modal-trigger wow fadeInUp"
                      data-target="modal-water-bending" aria-haspopup="true">
                     <div class="card-image">
                         <figure class="image has-ratio-3by4">
@@ -508,7 +596,7 @@
                 </div>
             </div>
             <div class="cell energy-bending">
-                <div class="card has-background-light js-modal-trigger"
+                <div class="card has-background-light js-modal-trigger wow fadeInUp"
                      data-target="modal-energy-bending" aria-haspopup="true">
                     <div class="card-image">
                         <figure class="image has-ratio-3by4">
@@ -620,7 +708,7 @@
         <h2 class="title">Contact Me</h2>
         <div class="columns mb-6">
             <div class="column">
-                <div class="card has-background-grey-darker">
+                <div class="card has-background-grey-darker wow fadeInUp">
                     <div class="card-content">
                         <div class="is-size-3 has-text-primary has-text-centered mb-3"><i
                                 class="fa-solid fa-map-location-dot"></i></div>
@@ -633,7 +721,7 @@
                 </div>
             </div>
             <div class="column">
-                <div class="card has-background-grey-darker">
+                <div class="card has-background-grey-darker wow fadeInUp">
                     <div class="card-content">
                         <div class="is-size-3 has-text-warning has-text-centered mb-3"><i
                                 class="fa-solid fa-envelope"></i></div>
@@ -647,7 +735,7 @@
                 </div>
             </div>
             <div class="column">
-                <div class="card has-background-grey-darker">
+                <div class="card has-background-grey-darker wow fadeInUp">
                     <div class="card-content">
                         <div class="is-size-3 has-text-info has-text-centered mb-3"><i
                                 class="fa-solid fa-phone"></i>
@@ -662,7 +750,7 @@
             </div>
         </div>
         <div class="columns">
-            <div class="column">
+            <div class="column wow fadeInUp">
                 <form action="https://api.web3forms.com/submit" method="POST">
                     <input type="hidden" name="access_key"
                            value="cb38ed67-ea76-40a5-bcea-d8c9c9283516">
@@ -703,7 +791,7 @@
 
                 </form>
             </div>
-            <div class="column">
+            <div class="column wow fadeInUp">
                 <div id="gmap-canvas" style="height:100%; width:100%;max-width:100%;">
                     <iframe style="height:100%;width:100%;border:0;" frameborder="0"
                             src="https://www.google.com/maps/embed/v1/place?q=Boston,+MA,+USA&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
