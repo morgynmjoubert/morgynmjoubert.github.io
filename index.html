@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"
+            integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+		document.addEventListener('DOMContentLoaded', function (event) {
+
+			const elem = document.querySelector('.isotope-filter');
+			const iso = new Isotope(elem, {
+				itemSelector: '.cell',
+				layoutMode: 'fitRows',
+				stagger: 30,
+			});
+			iso.arrange({filter: '.air-bending'});
+			window.setTimeout(() => {
+				iso.arrange({filter: '*'});
+			}, 1000)
+
+			const filtersElem = document.querySelector('.filters-button-group');
+			filtersElem.addEventListener('click', function (event) {
+				if ('a' === event.target.tagName.toLowerCase()) {
+					filtersElem.querySelectorAll('li').forEach((listItem) => {
+						listItem.classList.remove('is-active');
+					});
+
+					event.target.parentElement.classList.add('is-active');
+
+					let filterValue = event.target.dataset.filter;
+					iso.arrange({filter: filterValue});
+				}
+			});
+		});
+    </script>
+    <script>
+		document.addEventListener('DOMContentLoaded', () => {
+			// Functions to open and close a modal
+			function openModal($el) {
+				console.log($el);
+				$el.classList.add('is-active');
+			}
+
+			function closeModal($el) {
+				$el.classList.remove('is-active');
+			}
+
+			function closeAllModals() {
+				(document.querySelectorAll('.modal') || []).forEach(($modal) => {
+					closeModal($modal);
+				});
+			}
+
+			// Add a click event on buttons to open a specific modal
+			(document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+				const modal = $trigger.dataset.target;
+				const $target = document.getElementById(modal);
+
+				$trigger.addEventListener('click', () => {
+					openModal($target);
+				});
+			});
+
+			// Add a click event on various child elements to close the parent modal
+			(document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+				const $target = $close.closest('.modal');
+
+				$close.addEventListener('click', () => {
+					closeModal($target);
+				});
+			});
+
+			// Add a keyboard event to close all modals
+			document.addEventListener('keydown', (event) => {
+				if (event.key === "Escape") {
+					closeAllModals();
+				}
+			});
+		});
+    </script>
+    <style>
+		.isotope-filter .cell {
+			padding: 0.5rem;
+		}
+    </style>
+</head>
+<body>
+<section id="top" class="hero is-black is-fullheight">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item">
+                        <img src="https://bulma.io/assets/images/bulma-type-white.png" alt="Logo"/>
+                    </a>
+                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+                </div>
+                <div id="navbarMenuHeroA" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item is-active" href="#top"> Home </a>
+                        <a class="navbar-item" href="#about"> About </a>
+                        <a class="navbar-item" href="#experiences"> Experiences </a>
+                        <a class="navbar-item" href="#portfolio"> Portfolio </a>
+                        <span class="navbar-item">
+              <a class="button is-info is-inverted" href="#contact">
+                <span class="icon">
+                  <i class="fa-solid fa-address-card"></i>
+                </span>
+                <span>Contact</span>
+              </a>
+            </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="hero-body">
+        <div class="container h-card vcard">
+            <div class="columns is-mobile is-centered">
+                <div class="column column is-four-fifths-widescreen is-two-thirds-fullhd">
+                    <div class="columns">
+                        <div class="column">
+                            <p class="title is-size-1 has-text-weight-medium"><span
+                                    class="p-given-name given-name">Morgyn</span> <span
+                                    class="p-additional-name">J.</span>
+                                <span
+                                        class="p-family-name family-name">Joubert</span></p>
+                            <p class="subtitle is-size-3 mt-1 has-text-weight-light p-job-title title">
+                                Digital Storyteller and Content Strategist
+                            </p>
+                            <ul class="mt-6 has-text-left">
+                                <li class="mt-2">
+                                    <a href="https://morgynmjoubert.github.io/"
+                                       class="u-url url has-text-primary"><span
+                                            class="icon"><i class="fas fa-home"></i></span>
+                                        morgynmjoubert.github.io</a>
+                                </li>
+                                <li class="mt-2">
+                                    <a href="mailto:me@example.com"
+                                       class="u-email email has-text-primary"><span
+                                            class="icon"><i class="fas fa-envelope"></i></span>
+                                        morgynmjoubert@example.com</a>
+                                </li>
+                                <li class="mt-2 level">
+                                    <ul class="level-left">
+                                        <li class="level-item">
+
+                                            <a href="https://social.example.com/morgynmjoubert"
+                                               class="has-text-primary"><span
+                                                    class="icon"><i
+                                                    class="fas fa-thumbs-up"></i></span> <span
+                                                    class="p-nickname">morgynmjoubert</span></a>
+                                        </li>
+                                        <li class="level-item">
+                                            <a href="https://www.linkedin.com/in/morgyn-joubert-052665169"
+                                               class="has-text-primary"><span
+                                                    class="p-nickname"><span class="icon"><i
+                                                    class="fa-brands fa-linkedin-in"></i></span> morgyn-joubert-052665169</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <figure class="has-text-right has-ratio-3by4">
+                                <img class="u-photo" src="./Morgyn_Joubert600.jpg"/>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about" class="section">
+    <div class="container">
+        <div class="columns">
+            <figure class="column has-ratio-3by4 image">
+                <img class="u-photo" src="./Morgyn_Joubert600.jpg"/>
+            </figure>
+            <div class="column">
+                <div class="about mb-5 mt-8">
+                    <h2 class="title">About me</h2>
+                    <p class="has-text-weight-light mb-2 is-size-5 p-role role">I’m a
+                        multidisciplinary digital storyteller and analytics-driven content
+                        strategist with a strong foundation in journalism, UX, and data science.
+                        With experience spanning newsroom production, SEO, audience engagement, and
+                        user research, I specialize in crafting compelling narratives that drive
+                        measurable results. My strength is blending editorial instincts with data
+                        insights to design content strategies that inform, inspire, and engage.</p>
+                    <p class="has-text-weight-light mb-2 is-size-5 p-role role">I’ve led
+                        cross-functional teams, mentored junior producers, and optimized digital
+                        platforms using tools like Google Analytics, Tableau, and Hotjar. I’m
+                        passionate about enhancing user experiences through innovation,
+                        collaboration, and thoughtful design—whether building dashboards, rebranding
+                        websites, or managing newsletters. As I complete my M.S. in Analytics, I’m
+                        excited to apply my hybrid skillset to solve complex challenges in dynamic,
+                        mission-driven environments.</p>
+                </div>
+                <div class="tags">
+                    <span class="tag is-medium is-primary">Tableau</span>
+                    <span class="tag is-medium is-primary">Adobe Target</span>
+                    <span class="tag is-medium is-primary">SEMrush</span>
+                    <span class="tag is-medium is-primary">Hotjar</span>
+                    <span class="tag is-medium is-primary">Google Analytics</span>
+                    <span class="tag is-medium is-primary">Chartbeat</span>
+                    <span class="tag is-medium is-primary">Parsely</span>
+                    <span class="tag is-medium is-link">HTML</span>
+                    <span class="tag is-medium is-link">Javascript</span>
+                    <span class="tag is-medium is-link">Python</span>
+                    <span class="tag is-medium is-link">R</span>
+                    <span class="tag is-medium is-link">SQL</span>
+                    <span class="tag is-medium is-info">WordPress</span>
+                    <span class="tag is-medium is-info">ARC</span>
+                    <span class="tag is-medium is-info">CMS</span>
+                    <span class="tag is-medium is-info">Hubspot</span>
+                    <span class="tag is-medium is-info">Mailchimp</span>
+                    <span class="tag is-medium is-info">Gutenberg Blocks</span>
+                    <span class="tag is-medium is-success">Adobe Creative Suite</span>
+                    <span class="tag is-medium is-success">Final Cut Pro</span>
+                    <span class="tag is-medium is-success">Figma</span>
+                    <span class="tag is-medium is-success">Canva</span>
+                    <span class="tag is-medium is-success">Avid</span>
+                    <span class="tag is-medium is-warning">Meta</span>
+                    <span class="tag is-medium is-warning">X (Twitter)</span>
+                    <span class="tag is-medium is-warning">TikTok</span>
+                    <span class="tag is-medium is-warning">YouTube</span>
+                    <span class="tag is-medium is-warning">LinkedIn</span>
+                    <span class="tag is-medium is-warning">BlueSky</span>
+                    <span class="tag is-medium is-warning">Social News Desk</span>
+                    <span class="tag is-medium is-warning">True Anthem</span>
+                    <span class="tag is-medium is-warning">Sprinklr</span>
+                    <span class="tag is-medium is-danger">Jira</span>
+                    <span class="tag is-medium is-danger">Confluence</span>
+                    <span class="tag is-medium is-danger">Trello</span>
+                    <span class="tag is-medium is-danger">Monday</span>
+                    <span class="tag is-medium is-danger">Atlas</span>
+                    <span class="tag is-medium is-danger">Microsoft Office Suite</span>
+                    <span class="tag is-medium is-info">UX Research</span>
+                    <span class="tag is-medium is-info">Content Strategy</span>
+                    <span class="tag is-medium is-info">SEO/SEM</span>
+                    <span class="tag is-medium is-info">Newsletter Management</span>
+                    <span class="tag is-medium is-info">Interactive Storytelling</span>
+                    <span class="tag is-medium is-link">English</span>
+                    <span class="tag is-medium is-link">Basic proficiency in Python</span>
+                    <span class="tag is-medium is-link">Basic proficiency in R</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="what-i-do" class="section">
+    <div class="container">
+        <h2 class="title">What I do</h2>
+        <div class="columns">
+            <div class="column">
+                <div class="card has-background-grey-darker">
+                    <div class="card-content">
+                        <div class="is-size-3 has-text-primary has-text-centered mb-3"><i class="fa-solid fa-hexagon-nodes"></i></div>
+                        <h3 class="title is-size-4 has-text-weight-normal">Digital Strategy &
+                            Leadership</h3>
+                        <p>With a proven track record leading cross-functional teams, I drive
+                            audience growth and engagement through data-informed content strategies.
+                            I’ve overseen SEO/SEM campaigns that boosted organic traffic by 20%,
+                            owned editorial strategy for high-performing newsletters with open rates
+                            over 65%, and led digital rebranding initiatives that improved UX and
+                            recirculation. Whether managing websites or mentoring producers, I bring
+                            a strategic lens to every digital decision.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card has-background-grey-darker">
+                    <div class="card-content">
+                        <div class="is-size-3 has-text-info has-text-centered mb-3"><i
+                                class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="title is-size-4 has-text-weight-normal">Content Development & UX
+                            Research</h3>
+                        <p>My work blends storytelling, design, and UX. I craft engaging multimedia
+                            content using Adobe Creative Suite, Final Cut Pro, Figma, and Avid. I’ve
+                            researched user experience and developed audience-focused editorial
+                            strategies, particularly for Northeastern Global News. From developing
+                            interactive stories to designing marketing brochures, I ensure content
+                            resonates with users and business objectives.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card has-background-grey-darker">
+                    <div class="card-content">
+                        <div class="is-size-3 has-text-warning has-text-centered mb-3"><i
+                                class="fa-solid fa-ranking-star"></i></div>
+                        <h3 class="title is-size-4 has-text-weight-normal">Analytics & Performance
+                            Optimization</h3>
+                        <p>Skilled in analytics and reporting tools like Google Analytics, SEMrush,
+                            Tableau, Hotjar, and Chartbeat, I specialize in measuring and optimizing
+                            performance. I’ve used data to refine content strategies, increase
+                            engagement metrics, and inform A/B testing across digital channels. I
+                            also have technical fluency in Python, SQL, R, and JavaScript, allowing
+                            me to dive deeper into data and build impactful solutions that align
+                            with KPIs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="experiences" class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <h3 class="title">Education</h3>
+                <div class="card has-background-grey-darker">
+                    <div class="card-content">
+                        <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Bachelor's degree, Sociology and Journalism,</span>
+                            <span class="has-text-primary is-size-4 has-text-weight-light">University of Massachusetts Lowell</span>
+                        </h4>
+                        <p><small class="has-text-info">2015 &ndash; 2018</small></p>
+                        <p class="mt-3"><b>Relevant courses:</b> Cloud Management, Fire Bending,
+                            Wind Becomes Hellfire: Daosdorg, Lights of Judgement: Catastravia</p>
+                        <div class="content mt-5">
+                            <ul>
+                                <li>Awesome project 1</li>
+                                <li>Awesome project 2</li>
+                                <li>Awesome project 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content has-background-grey-darker">
+                        <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Master of Professional Studies, Analytics,</span>
+                            <span class="has-text-primary is-size-4 has-text-weight-light">Northeastern University</span>
+                        </h4>
+                        <p><small class="has-text-info">2023 &ndash; 2025</small></p>
+                        <p class="mt-3"><b>Relevant courses:</b> Cloud Management, Fire Bending,
+                            Wind Becomes Hellfire: Daosdorg, Lights of Judgement: Catastravia</p>
+                        <div class="content mt-5">
+                            <ul>
+                                <li>Awesome project 1</li>
+                                <li>Awesome project 2</li>
+                                <li>Awesome project 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <h3 class="title">Work Experience</h3>
+                <div class="card has-background-grey-darker">
+                    <div class="card-content">
+                        <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Senior Digital Media Producer,</span>
+                            <span class="has-text-primary is-size-4 has-text-weight-light">Northeastern University</span>
+                        </h4>
+                        <p><small class="has-text-info">2022 &ndash; Present</small></p>
+                        <p class="mt-3">At Northeastern University's communications department, I
+                            strategize and create content, organize and optimize the university's
+                            website for SEO, and execute email marketing campaigns by creating
+                            newsletters while managing multiple audiences. I excel at having a keen
+                            ability to tailor content to sepcific audiences. I manage the workflow
+                            for various teams within the department, including reporters,
+                            photographers, videographers, web developers, illustrators, and graphic
+                            designers, to meet tight deadlines and outperform our department's
+                            metric goals. My responsibilities include writing articles, conducting
+                            interviews with experts in various fields, and creating engaging digital
+                            media while managing multiple team projects.</p>
+                        <div class="content mt-5">
+                            <ul>
+                                <li>Awesome project 1</li>
+                                <li>Awesome project 2</li>
+                                <li>Awesome project 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card has-background-grey-darker">
+                    <div class="card-content">
+                        <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Assignment Desk Editor,</span>
+                            <span class="has-text-primary is-size-4 has-text-weight-light">7 News, WHDH-TV</span>
+                        </h4>
+                        <p><small class="has-text-info">2022 &ndash; 2023</small></p>
+                        <p class="mt-3">Collaborated with reporters, producers, directors, and
+                            photographers to fulfill all content needed for shows. Scheduled ahead
+                            stories for future newscasts and segments. Monitored social media and
+                            news publications for potential stories. Gathered information on
+                            breaking news from first responders and public figures while assisting
+                            producers in all aspects of the show.</p>
+                    </div>
+                </div>
+                <div class="card has-background-grey-darker">
+                    <div class="card-content">
+                        <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Digital Content Producer,</span>
+                            <span class="has-text-primary is-size-4 has-text-weight-light">WFXT Boston 25 News</span>
+                        </h4>
+                        <p><small class="has-text-info">2021 &ndash; 2022</small></p>
+                    </div>
+                </div>
+                <div class="card has-background-grey-darker">
+                    <div class="card-content">
+                        <h4 class="title mb-2"><span class="is-size-4 has-text-weight-bold">Digital Content Producer,</span>
+                            <span class="has-text-primary is-size-4 has-text-weight-light">Meredith Corporation WGGB/WSHM</span>
+                        </h4>
+                        <p><small class="has-text-info">2019 &ndash; 2021</small></p>
+                        <p class="mt-3">Researches and writes new content while brainstorming
+                            and pitching innovative story ideas. Manages and collaborates with
+                            newsroom staff at the station and out in the field. Creates push
+                            alerts for each show and breaking news story while confirming tips
+                            and information from public officials. Creates web articles, updates
+                            and posts on social media accounts, and designs and edits videos and
+                            photos. Effectively communicates with the public by answering
+                            incoming phone calls. Informs newsroom and affiliates on live
+                            segments and interviews with high profile individuals for upcoming
+                            stories.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="portfolio" class="section portfolio">
+    <div class="container">
+        <h2 class="title">Recent Portfolio</h2>
+        <nav class="tabs ">
+            <div class="container filters-button-group">
+                <ul>
+                    <li class="is-active"><a data-filter="*">All Categories</a></li>
+                    <li><a data-filter=".air-bending">Air</a></li>
+                    <li><a data-filter=".water-bending">Water</a></li>
+                    <li><a data-filter=".earth-bending">Earth</a></li>
+                    <li><a data-filter=".fire-bending">Fire</a></li>
+                    <li><a data-filter=".energy-bending">Energy</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container isotope-filter grid is-col-min-13">
+            <div class="cell air-bending">
+                <div class="card has-background-light js-modal-trigger"
+                     data-target="modal-air-bending" aria-haspopup="true">
+                    <div class="card-image">
+                        <figure class="image has-ratio-3by4">
+                            <img class="u-photo" src="https://picsum.photos/300/400"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-dark" data-category="air-bending">Air Shield</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cell fire-bending">
+                <div class="card has-background-light js-modal-trigger"
+                     data-target="modal-fire-bending" aria-haspopup="true">
+                    <div class="card-image">
+                        <figure class="image has-ratio-3by4">
+                            <img class="u-photo" src="https://picsum.photos/300/400"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-dark">Single Spark</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell earth-bending">
+                <div class="card has-background-light js-modal-trigger"
+                     data-target="modal-earth-bending" aria-haspopup="true">
+                    <div class="card-image">
+                        <figure class="image has-ratio-3by4">
+                            <img class="u-photo" src="https://picsum.photos/300/400"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-dark">Glassbending</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cell water-bending">
+                <div class="card has-background-light js-modal-trigger"
+                     data-target="modal-water-bending" aria-haspopup="true">
+                    <div class="card-image">
+                        <figure class="image has-ratio-3by4">
+                            <img class="u-photo" src="https://picsum.photos/300/400"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-dark">Breath of Ice</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell energy-bending">
+                <div class="card has-background-light js-modal-trigger"
+                     data-target="modal-energy-bending" aria-haspopup="true">
+                    <div class="card-image">
+                        <figure class="image has-ratio-3by4">
+                            <img class="u-photo" src="https://picsum.photos/300/400"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-dark">Astral Projection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modal-air-bending" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Air Bending</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <!-- Content ... -->
+                </section>
+                <footer class="modal-card-foot">
+                    <div class="buttons">
+                        <button class="button is-success">Save changes</button>
+                        <button class="button">Cancel</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div id="modal-earth-bending" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Earth Bending</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <!-- Content ... -->
+                </section>
+                <footer class="modal-card-foot">
+                    <div class="buttons">
+                        <button class="button is-success">Save changes</button>
+                        <button class="button">Cancel</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div id="modal-fire-bending" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Fire Bending</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <!-- Content ... -->
+                </section>
+                <footer class="modal-card-foot">
+                    <div class="buttons">
+                        <button class="button is-success">Save changes</button>
+                        <button class="button">Cancel</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div id="modal-energy-bending" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Energy Bending</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <!-- Content ... -->
+                </section>
+                <footer class="modal-card-foot">
+                    <div class="buttons">
+                        <button class="button is-success">Save changes</button>
+                        <button class="button">Cancel</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div id="modal-water-bending" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Water Bending</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <!-- Content ... -->
+                </section>
+                <footer class="modal-card-foot">
+                    <div class="buttons">
+                        <button class="button is-success">Save changes</button>
+                        <button class="button">Cancel</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact" class="section">
+    <div class="container">
+        <h2 class="title">Contact Me</h2>
+        <div class="columns mb-6">
+            <div class="column">
+                <div class="card has-background-grey-darker">
+                    <div class="card-content">
+                        <div class="is-size-3 has-text-primary has-text-centered mb-3"><i
+                                class="fa-solid fa-map-location-dot"></i></div>
+                        <h3 class="title is-size-5 has-text-weight-normal has-text-centered mb-3">
+                            Address</h3>
+                        <p class="has-text-centered mb-5"><a class="has-text-light"
+                                                             href="https://www.google.com/maps/place/Boston,+MA/@42.3142475,-71.1348301,11z/data=!3m1!4b1!4m6!3m5!1s0x89e3652d0d3d311b:0x787cbf240162e8a0!8m2!3d42.3555076!4d-71.0565364!16zL20vMDFjeF8?entry=ttu&g_ep=EgoyMDI1MDQwMi4xIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">Boston,
+                            Massachusetts</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card has-background-grey-darker">
+                    <div class="card-content">
+                        <div class="is-size-3 has-text-warning has-text-centered mb-3"><i
+                                class="fa-solid fa-envelope"></i></div>
+                        <h3 class="title is-size-5 has-text-weight-normal has-text-centered mb-3">
+                            Email</h3>
+                        <p class="has-text-centered mb-5"><a class="has-text-light"
+                                                             href="mailto:user@example.com">user@example.com</a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card has-background-grey-darker">
+                    <div class="card-content">
+                        <div class="is-size-3 has-text-info has-text-centered mb-3"><i
+                                class="fa-solid fa-phone"></i>
+                        </div>
+                        <h3 class="title is-size-5 has-text-weight-normal has-text-centered mb-3">
+                            Phone</h3>
+                        <p class="has-text-centered mb-5"><a class="has-text-light"
+                                                             href="tel:+5555555555">(555)
+                            555-5555</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key"
+                           value="cb38ed67-ea76-40a5-bcea-d8c9c9283516">
+                    <div class="field">
+                        <label class="label">Name</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" name="name" required>
+                            <span class="icon is-small is-left"><i
+                                    class="fas fa-person"></i></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="email" name="email" required>
+                            <span class="icon is-small is-left"><i
+                                    class="fas fa-envelope"></i></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Message</label>
+                        <div class="control has-icons-left">
+                            <span class="icon is-small is-left"><i class="fa-solid fa-message"></i></span>
+                            <textarea class="textarea" name="message" required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Honeypot Spam Protection -->
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <!-- Custom Confirmation / Success Page -->
+                    <!-- <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-link" type="submit">Submit Form</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="column">
+                <div id="gmap-canvas" style="height:100%; width:100%;max-width:100%;">
+                    <iframe style="height:100%;width:100%;border:0;" frameborder="0"
+                            src="https://www.google.com/maps/embed/v1/place?q=Boston,+MA,+USA&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+                </div>
+                <style>#gmap-canvas img {
+					max-height: none;
+					max-width: none !important;
+					background: none !important;
+				}</style>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="hero">
+    <div class="hero-body has-text-centered">
+        <p class="is-size-6">&copy; Morgyn J. Joubert. All rights reserved.</p>
+        <div class="mt-2 has-text-centered">
+            <a href="https://social.example.com/mjjoubert"
+               class="has-text-primary mr-5"><span class="icon"><i
+                    class="fas fa-thumbs-up"></i></span>
+                <span class="p-nickname">mjjoubert</span></a>
+            <a href="https://www.linkedin.com/in/morgyn-joubert-052665169" class="has-text-primary"><span
+                    class="p-nickname"><span class="icon"><i
+                    class="fa-brands fa-linkedin-in"></i></span> morgyn-joubert-052665169</span></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
