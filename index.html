@@ -17,18 +17,19 @@
 
 
     <script>
+		// Isotope Filter
 		document.addEventListener('DOMContentLoaded', function (event) {
 
 			const elem = document.querySelector('.isotope-filter');
 			const iso = new Isotope(elem, {
 				itemSelector: '.cell',
-				layoutMode: 'fitRows',
+				layoutMode: 'masonry',
 				stagger: 30,
 			});
-			iso.arrange({filter: '.air-bending'});
-			window.setTimeout(() => {
-				iso.arrange({filter: '*'});
-			}, 1000)
+			// iso.arrange({filter: '.category-newsletter'});
+			// window.setTimeout(() => {
+			// 	iso.arrange({filter: '*'});
+			// }, 1000)
 
 			const filtersElem = document.querySelector('.filters-button-group');
 			filtersElem.addEventListener('click', function (event) {
@@ -46,6 +47,7 @@
 		});
     </script>
     <script>
+		// Hamburger menu
 		document.addEventListener('DOMContentLoaded', () => {
 
 			// Get all "navbar-burger" elements
@@ -82,6 +84,7 @@
 		});
     </script>
     <script>
+		// Modals
 		document.addEventListener('DOMContentLoaded', () => {
 			// Functions to open and close a modal
 			function openModal($el) {
@@ -127,6 +130,17 @@
 		});
     </script>
     <style>
+        .isotope-filter {
+	        max-width: 1054px !important;
+        }
+		.has-object-fit-cover > * {
+			object-fit: cover;
+		}
+
+		.has-object-position-top > * {
+			object-position: top;
+		}
+
 		.isotope-filter .cell {
 			padding: 0.5rem;
 		}
@@ -138,6 +152,10 @@
 		.is-z-index-1 {
 			position: relative;
 			z-index: 1 !important;
+		}
+
+		.is-width-335 {
+			width: 335px;
 		}
 
 		@media screen and (max-width: 768px) {
@@ -237,23 +255,11 @@
                                             class="icon"><i class="fas fa-envelope"></i></span>
                                         morgynmjoubert@example.com</a>
                                 </li>
-                                <li class="mt-2 level wow fadeInUp" data-wow-delay="0.8s">
-                                    <ul class="level-left">
-                                        <li class="level-item wow fadeInUp">
-
-                                            <a href="https://social.example.com/morgynmjoubert"
-                                               class="has-text-primary"><span
-                                                    class="icon"><i
-                                                    class="fas fa-thumbs-up"></i></span> <span
-                                                    class="p-nickname">morgynmjoubert</span></a>
-                                        </li>
-                                        <li class="level-item wow fadeInUp">
-                                            <a href="https://www.linkedin.com/in/morgyn-joubert-052665169"
-                                               class="has-text-primary"><span
-                                                    class="p-nickname"><span class="icon"><i
-                                                    class="fa-brands fa-linkedin-in"></i></span> morgyn-joubert-052665169</span></a>
-                                        </li>
-                                    </ul>
+                                <li class="mt-2 wow fadeInUp">
+                                    <a href="https://www.linkedin.com/in/morgyn-joubert-052665169"
+                                       class="has-text-primary"><span
+                                            class="p-nickname"><span class="icon"><i
+                                            class="fa-brands fa-linkedin-in"></i></span> LinkedIn</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -499,183 +505,529 @@
 <section id="portfolio" class="section portfolio">
     <div class="container">
         <h2 class="title">Recent Portfolio</h2>
-        <nav class="tabs ">
+        <nav class="tabs is-centered">
             <div class="container filters-button-group">
                 <ul>
-                    <li class="is-active"><a data-filter="*">All Categories</a></li>
-                    <li><a data-filter=".air-bending">Air</a></li>
-                    <li><a data-filter=".water-bending">Water</a></li>
-                    <li><a data-filter=".earth-bending">Earth</a></li>
-                    <li><a data-filter=".fire-bending">Fire</a></li>
-                    <li><a data-filter=".energy-bending">Energy</a></li>
+                    <li class="is-active"><a data-filter="*">All Projects</a></li>
+                    <li><a data-filter=".category-newsletter">Newsletters</a></li>
+                    <li><a data-filter=".category-landing-page">Landing Pages</a></li>
+                    <li><a data-filter=".category-featured-story">Featured Stories</a></li>
                 </ul>
             </div>
         </nav>
-        <div class="container isotope-filter grid is-col-min-13">
-            <div class="cell air-bending">
-                <div class="card has-background-light js-modal-trigger wow fadeInUp"
-                     data-target="modal-air-bending" aria-haspopup="true">
-                    <div class="card-image">
-                        <figure class="image has-ratio-3by4">
-                            <img class="u-photo" src="https://picsum.photos/300/400"/>
+        <div class="container isotope-filter grid is-col-min-13 wow fadeInUp">
+            <div class="cell category-newsletter">
+                <div class="card is-clickable is-width-335 has-background-primary has-text-dark js-modal-trigger"
+                     data-target="modal-newsletter-parents-families" aria-haspopup="true">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">Parents & Families</p>
+                    </header>
+                    <div class="card-image  ">
+                        <figure class="image is-3by4 has-object-fit-cover has-object-position-top">
+                            <img class="u-photo has-ratio "
+                                 src="./newsletter-parents-families.jpg"/>
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="content">
-                            <p class="has-text-dark" data-category="air-bending">Air Shield</p>
+                            <p class="has-text-primary-invert">Average open/click rate<br><span
+                                    class="is-size-7">March
+                                2024-March 2025</span></p>
+                            <p class="has-text-primary-invert">Open: 60.1%<br>
+                                Click: 6.5%</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="cell fire-bending">
-                <div class="card has-background-light js-modal-trigger wow fadeInUp"
-                     data-target="modal-fire-bending" aria-haspopup="true">
-                    <div class="card-image">
-                        <figure class="image has-ratio-3by4">
-                            <img class="u-photo" src="https://picsum.photos/300/400"/>
+            <div class="cell category-landing-page">
+                <div class="card is-clickable is-width-335 has-background-info has-text-dark js-modal-trigger"
+                     data-target="modal-landing-page-ngn-research" aria-haspopup="true">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">NGN Research</p>
+                    </header>
+                    <div class="card-image  ">
+                        <figure class="image is-3by4 has-object-fit-cover has-object-position-top">
+                            <img class="u-photo has-ratio "
+                                 src="./newsletter-parents-families.jpg"/>
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="content">
-                            <p class="has-text-dark">Single Spark</p>
+                            <p class="has-text-primary-invert"><a class="has-text-primary-invert"
+                                                                  href="https://news.northeastern.edu/research/">Live
+                                link</a><br>
+                                <a class="has-text-primary-invert" href="https://www.figma.com/design/0PXBfzwUCsFfJTkLLWejMn/Research-Hub?node-
+                                id=0-1&t=03ijrQSBa477NX70-1">Figma file</a></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="cell earth-bending">
-                <div class="card has-background-light js-modal-trigger wow fadeInUp"
-                     data-target="modal-earth-bending" aria-haspopup="true">
-                    <div class="card-image">
-                        <figure class="image has-ratio-3by4">
-                            <img class="u-photo" src="https://picsum.photos/300/400"/>
+            <div class="cell category-newsletter">
+                <div class="card is-clickable is-width-335 has-background-primary has-text-dark js-modal-trigger"
+                     data-target="modal-newsletter-ngn" aria-haspopup="true">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">Northeastern Global News
+                            (NGN)</p>
+                    </header>
+                    <div class="card-image  ">
+                        <figure class="image is-3by4 has-object-fit-cover has-object-position-top">
+                            <img class="u-photo has-ratio "
+                                 src="./newsletter-parents-families.jpg"/>
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="content">
-                            <p class="has-text-dark">Glassbending</p>
+                            <p class="has-text-primary-invert">Average open/click rate<br><span
+                                    class="is-size-7">March
+                                2024-March 2025</span></p>
+                            <p class="has-text-primary-invert">Open: 60.1%<br>
+                                Click: 6.5%</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="cell water-bending">
-                <div class="card has-background-light js-modal-trigger wow fadeInUp"
-                     data-target="modal-water-bending" aria-haspopup="true">
-                    <div class="card-image">
-                        <figure class="image has-ratio-3by4">
-                            <img class="u-photo" src="https://picsum.photos/300/400"/>
+            <div class="cell category-landing-page">
+                <div class="card is-clickable is-width-335 has-background-info has-text-dark js-modal-trigger"
+                     data-target="modal-landing-page-ngn-homepage" aria-haspopup="true">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">NGN Homepage</p>
+                    </header>
+                    <div class="card-image  ">
+                        <figure class="image is-3by4 has-object-fit-cover has-object-position-top">
+                            <img class="u-photo has-ratio "
+                                 src="./newsletter-parents-families.jpg"/>
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="content">
-                            <p class="has-text-dark">Breath of Ice</p>
+                            <p><a class="has-text-primary-invert"
+                                  href="https://news.northeastern.edu/">Live link</a><br>
+                                <a class="has-text-primary-invert" href="https://www.figma.com/design/1umRmxkmk7TLUrC5gR7x9O/Homepage?node-i
+                                d=0-1&t=E7ROUkByr4A53KsK-1">Figma file 1</a><br>
+                                <a class="has-text-primary-invert" href="https://www.figma.com/design/LqcoS2aoMAhZhgNRWvv13E/NGN-Website-Main
+                                ?node-id=1536-74&t=nNq7j8XOeaLUV8GF-1">Figma file 2</a>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="cell energy-bending">
-                <div class="card has-background-light js-modal-trigger wow fadeInUp"
-                     data-target="modal-energy-bending" aria-haspopup="true">
-                    <div class="card-image">
-                        <figure class="image has-ratio-3by4">
-                            <img class="u-photo" src="https://picsum.photos/300/400"/>
+            <div class="cell category-featured-story">
+                <div class="card is-clickable is-width-335 has-background-warning has-text-dark js-modal-trigger"
+                     data-target="modal-featured-story-corallith-research" aria-haspopup="true">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">Corallith Research</p>
+                    </header>
+                    <div class="card-image  ">
+                        <figure class="image is-3by4 has-object-fit-cover has-object-position-top">
+                            <img class="u-photo has-ratio "
+                                 src="./newsletter-parents-families.jpg"/>
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="content">
-                            <p class="has-text-dark">Astral Projection</p>
+                            <p><a class="has-text-primary-invert"
+                                  href="https://news.northeastern.edu/2024/07/26/magazine/corallith-coral-reef-florida-re
+search/">Live
+                                link</a><br>
+                                <a class="has-text-primary-invert"
+                                   href="https://www.figma.com/design/po6ISYczZoOoOq3py0fH9N/2024---Corallith-Story
+?t=ze76iOtvWSMGI3of-1\">Figma file</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell category-newsletter">
+                <div class="card is-clickable is-width-335 has-background-primary has-text-dark js-modal-trigger"
+                     data-target="modal-newsletter-ngn-weekend" aria-haspopup="true">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">NGN Weekend</p>
+                    </header>
+                    <div class="card-image  ">
+                        <figure class="image is-3by4 has-object-fit-cover has-object-position-top">
+                            <img class="u-photo has-ratio "
+                                 src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-primary-invert">Average open/click rate<br><span
+                                    class="is-size-7">March
+                                2024-March 2025</span></p>
+                            <p class="has-text-primary-invert">Open: <br>
+                                Click: </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell category-newsletter">
+                <div class="card is-clickable is-width-335 has-background-primary has-text-dark js-modal-trigger"
+                     data-target="modal-newsletter-faculty-staff" aria-haspopup="true">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">Faculty & Staff</p>
+                    </header>
+                    <div class="card-image  ">
+                        <figure class="image is-3by4 has-object-fit-cover has-object-position-top">
+                            <img class="u-photo has-ratio "
+                                 src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-primary-invert">Average open/click rate<br><span
+                                    class="is-size-7">March
+                                2024-March 2025</span></p>
+                            <p class="has-text-primary-invert">Open: 55.4%<br>
+                                Click: 5.9%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell category-featured-story">
+                <div class="card is-clickable is-width-335 has-background-warning has-text-dark js-modal-trigger"
+                     data-target="modal-featured-story-ballet-club" aria-haspopup="true">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">Ballet Club</p>
+                    </header>
+                    <div class="card-image  ">
+                        <figure class="image is-3by4 has-object-fit-cover has-object-position-top">
+                            <img class="u-photo has-ratio "
+                                 src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p><a class="has-text-primary-invert"
+                                  href="https://news.northeastern.edu/2024/11/01/noreste-ballet-company/">Live
+                                link</a><br>
+                                <a class="has-text-primary-invert"
+                                   href="https://www.figma.com/design/2n4TuTFM0I375R27yHT264/Ballet-Story?node-id
+=0-1&p=f&t=ze76iOtvWSMGI3of-0">Figma file</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell category-landing-page">
+                <div class="card is-clickable is-width-335 has-background-info has-text-dark js-modal-trigger"
+                     data-target="modal-landing-page-video-article-formats" aria-haspopup="true">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">Video Article Formats</p>
+                    </header>
+                    <div class="card-image  ">
+                        <figure class="image is-3by4 has-object-fit-cover has-object-position-top">
+                            <img class="u-photo has-ratio "
+                                 src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p><a class="has-text-primary-invert"
+                                  href="https://news.northeastern.edu/2024/11/15/veterans-day-ceremony-video-2024/">Live
+                                link</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell category-newsletter">
+                <div class="card is-clickable is-width-335 has-background-primary has-text-dark js-modal-trigger"
+                     data-target="modal-newsletter-ngn-research" aria-haspopup="true">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">NGN Research</p>
+                    </header>
+                    <div class="card-image  ">
+                        <figure class="image is-3by4 has-object-fit-cover has-object-position-top">
+                            <img class="u-photo has-ratio "
+                                 src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-primary-invert">Average open/click rate<br><span
+                                    class="is-size-7">March
+                                2024-March 2025</span></p>
+                            <p class="has-text-primary-invert">Open: 37.6%<br>
+                                Click: 2.7%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell category-featured-story">
+                <div class="card is-clickable is-width-335 has-background-warning has-text-dark js-modal-trigger"
+                     data-target="modal-featured-story-ancient-forests" aria-haspopup="true">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">Ancient Forests</p>
+                    </header>
+                    <div class="card-image  ">
+                        <figure class="image is-3by4 has-object-fit-cover has-object-position-top">
+                            <img class="u-photo has-ratio "
+                                 src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p><a class="has-text-primary-invert"
+                                  href="https://news.northeastern.edu/2024/09/06/ancient-forests-pacific-northwest/">Live
+                                link</a><br>
+                                <a class="has-text-primary-invert"
+                                   href="https://www.figma.com/design/4b7Gy2JzlYyZeXVHHwtrOL/2024---Ancient-Forest
+s?node-id=94-385&t=ze76iOtvWSMGI3of-1">Figma file</a>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="modal-air-bending" class="modal">
+        <div id="modal-newsletter-parents-families" class="modal">
             <div class="modal-background"></div>
             <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Air Bending</p>
+                <header class="modal-card-head has-background-dark">
+                    <div class="modal-card-title">
+                        <p class="is-size-6 mb-1 has-text-primary">Newsletter</p>
+                        <p class="mt-0">Parents & Families</p></div>
                     <button class="delete" aria-label="close"></button>
                 </header>
-                <section class="modal-card-body">
-                    <!-- Content ... -->
+                <section class="modal-card-body has-background-grey-dark">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img class="u-photo" src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
                 </section>
-                <footer class="modal-card-foot">
+                <footer class="modal-card-foot has-background-grey-dark">
                     <div class="buttons">
-                        <button class="button is-success">Save changes</button>
-                        <button class="button">Cancel</button>
+                        <button class="button is-black">Done</button>
                     </div>
                 </footer>
             </div>
         </div>
-        <div id="modal-earth-bending" class="modal">
+        <div id="modal-newsletter-ngn" class="modal">
             <div class="modal-background"></div>
             <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Earth Bending</p>
+                <header class="modal-card-head has-background-dark">
+                    <div class="modal-card-title">
+                        <p class="is-size-6 mb-1 has-text-primary">Newsletter</p>
+                        <p class="mt-0">Northeastern Global News (NGN)</p></div>
                     <button class="delete" aria-label="close"></button>
                 </header>
-                <section class="modal-card-body">
-                    <!-- Content ... -->
+                <section class="modal-card-body has-background-grey-dark">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img class="u-photo" src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
                 </section>
-                <footer class="modal-card-foot">
+                <footer class="modal-card-foot has-background-grey-dark">
                     <div class="buttons">
-                        <button class="button is-success">Save changes</button>
-                        <button class="button">Cancel</button>
+                        <button class="button is-black">Done</button>
                     </div>
                 </footer>
             </div>
         </div>
-        <div id="modal-fire-bending" class="modal">
+        <div id="modal-newsletter-ngn-weekend" class="modal">
             <div class="modal-background"></div>
             <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Fire Bending</p>
+                <header class="modal-card-head has-background-dark">
+                    <div class="modal-card-title">
+                        <p class="is-size-6 mb-1 has-text-primary">Newsletter</p>
+                        <p class="mt-0">NGN Weekend</p></div>
                     <button class="delete" aria-label="close"></button>
                 </header>
-                <section class="modal-card-body">
-                    <!-- Content ... -->
+                <section class="modal-card-body has-background-grey-dark">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img class="u-photo" src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
                 </section>
-                <footer class="modal-card-foot">
+                <footer class="modal-card-foot has-background-grey-dark">
                     <div class="buttons">
-                        <button class="button is-success">Save changes</button>
-                        <button class="button">Cancel</button>
+                        <button class="button is-black">Done</button>
                     </div>
                 </footer>
             </div>
         </div>
-        <div id="modal-energy-bending" class="modal">
+        <div id="modal-newsletter-faculty-staff" class="modal">
             <div class="modal-background"></div>
             <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Energy Bending</p>
+                <header class="modal-card-head has-background-dark">
+                    <div class="modal-card-title">
+                        <p class="is-size-6 mb-1 has-text-primary">Newsletter</p>
+                        <p class="mt-0">Faculty & Staff</p></div>
                     <button class="delete" aria-label="close"></button>
                 </header>
-                <section class="modal-card-body">
-                    <!-- Content ... -->
+                <section class="modal-card-body has-background-grey-dark">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img class="u-photo" src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
                 </section>
-                <footer class="modal-card-foot">
+                <footer class="modal-card-foot has-background-grey-dark">
                     <div class="buttons">
-                        <button class="button is-success">Save changes</button>
-                        <button class="button">Cancel</button>
+                        <button class="button is-black">Done</button>
                     </div>
                 </footer>
             </div>
         </div>
-        <div id="modal-water-bending" class="modal">
+        <div id="modal-newsletter-ngn-research" class="modal">
             <div class="modal-background"></div>
             <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Water Bending</p>
+                <header class="modal-card-head has-background-dark">
+                    <div class="modal-card-title">
+                        <p class="is-size-6 mb-1 has-text-primary">Newsletter</p>
+                        <p class="mt-0">NGN Research</p></div>
                     <button class="delete" aria-label="close"></button>
                 </header>
-                <section class="modal-card-body">
-                    <!-- Content ... -->
+                <section class="modal-card-body has-background-grey-dark">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img class="u-photo" src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
                 </section>
-                <footer class="modal-card-foot">
+                <footer class="modal-card-foot has-background-grey-dark">
                     <div class="buttons">
-                        <button class="button is-success">Save changes</button>
-                        <button class="button">Cancel</button>
+                        <button class="button is-black">Done</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div id="modal-landing-page-ngn-research" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head has-background-dark">
+                    <div class="modal-card-title">
+                        <p class="is-size-6 mb-1 has-text-info">Landing Page</p>
+                        <p class="mt-0">NGN Research</p></div>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body has-background-grey-dark">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img class="u-photo" src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                </section>
+                <footer class="modal-card-foot has-background-grey-dark">
+                    <div class="buttons">
+                        <button class="button is-black">Done</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div id="modal-landing-page-ngn-homepage" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head has-background-dark">
+                    <div class="modal-card-title">
+                        <p class="is-size-6 mb-1 has-text-info">Landing Page</p>
+                        <p class="mt-0">NGN Homepage</p></div>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body has-background-grey-dark">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img class="u-photo" src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                </section>
+                <footer class="modal-card-foot has-background-grey-dark">
+                    <div class="buttons">
+                        <button class="button is-black">Done</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div id="modal-landing-page-video-article-formats" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head has-background-dark">
+                    <div class="modal-card-title">
+                        <p class="is-size-6 mb-1 has-text-info">Landing Page</p>
+                        <p class="mt-0">Video Article Formats</p></div>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body has-background-grey-dark">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img class="u-photo" src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                </section>
+                <footer class="modal-card-foot has-background-grey-dark">
+                    <div class="buttons">
+                        <button class="button is-black">Done</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div id="modal-featured-story-corallith-research" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head has-background-dark">
+                    <div class="modal-card-title">
+                        <p class="is-size-6 mb-1 has-text-warning">Featured Story</p>
+                        <p class="mt-0">Corallith Research</p></div>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body has-background-grey-dark">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img class="u-photo" src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                </section>
+                <footer class="modal-card-foot has-background-grey-dark">
+                    <div class="buttons">
+                        <button class="button is-black">Done</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div id="modal-featured-story-ballet-club" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head has-background-dark">
+                    <div class="modal-card-title">
+                        <p class="is-size-6 mb-1 has-text-warning">Featured Story</p>
+                        <p class="mt-0">Ballet Club</p></div>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body has-background-grey-dark">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img class="u-photo" src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                </section>
+                <footer class="modal-card-foot has-background-grey-dark">
+                    <div class="buttons">
+                        <button class="button is-black">Done</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div id="modal-featured-story-ancient-forests" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head has-background-dark">
+                    <div class="modal-card-title">
+                        <p class="is-size-6 mb-1 has-text-warning">Featured Story</p>
+                        <p class="mt-0">Ancient Forests</p></div>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body has-background-grey-dark">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img class="u-photo" src="./newsletter-parents-families.jpg"/>
+                        </figure>
+                    </div>
+                </section>
+                <footer class="modal-card-foot has-background-grey-dark">
+                    <div class="buttons">
+                        <button class="button is-black">Done</button>
                     </div>
                 </footer>
             </div>
@@ -788,13 +1140,9 @@
     <div class="hero-body has-text-centered">
         <p class="is-size-6">&copy; Morgyn J. Joubert. All rights reserved.</p>
         <div class="mt-2 has-text-centered">
-            <a href="https://social.example.com/mjjoubert"
-               class="has-text-primary mr-5"><span class="icon"><i
-                    class="fas fa-thumbs-up"></i></span>
-                <span class="p-nickname">mjjoubert</span></a>
             <a href="https://www.linkedin.com/in/morgyn-joubert-052665169" class="has-text-primary"><span
                     class="p-nickname"><span class="icon"><i
-                    class="fa-brands fa-linkedin-in"></i></span> morgyn-joubert-052665169</span></a>
+                    class="fa-brands fa-linkedin-in"></i></a>
         </div>
     </div>
 </footer>
