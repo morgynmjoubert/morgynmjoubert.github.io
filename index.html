@@ -18,7 +18,10 @@
 
 
     <script>
-		// Isotope Filter
+      /**
+       * Isotope filter.
+       * Animates sorting by category.
+       */
 		document.addEventListener('DOMContentLoaded', function (event) {
 
 			const elem = document.querySelector('.isotope-filter');
@@ -26,11 +29,8 @@
 				itemSelector: '.cell',
 				layoutMode: 'masonry',
 				stagger: 30,
+                percentPosition: true,
 			});
-			// iso.arrange({filter: '.category-newsletter'});
-			// window.setTimeout(() => {
-			// 	iso.arrange({filter: '*'});
-			// }, 1000)
 
 			const filtersElem = document.querySelector('.filters-button-group');
 			filtersElem.addEventListener('click', function (event) {
@@ -47,8 +47,23 @@
 			});
 		});
     </script>
+    <style>
+        /**
+         * Isotope styles.
+         */
+        .isotope-filter {
+            max-width: 1054px !important;
+        }
+        .isotope-filter .cell {
+            width: 33%;
+            min-width: 304px;
+            padding: 0.5rem;
+        }
+    </style>
     <script>
-		// Hamburger menu
+      /**
+       * Mobile menu interactivity
+       */
 		document.addEventListener('DOMContentLoaded', () => {
 
 			// Get all "navbar-burger" elements
@@ -85,7 +100,9 @@
 		});
     </script>
     <script>
-		// Modals
+      /**
+       * Interactivity for modals.
+       */
 		document.addEventListener('DOMContentLoaded', () => {
 			// Functions to open and close a modal
 			function openModal($el) {
@@ -131,20 +148,15 @@
 		});
     </script>
     <style>
-		.isotope-filter {
-			max-width: 1054px !important;
-		}
-
+        /**
+         * Extension of Bulma styles.
+         */
 		.has-object-fit-cover > * {
 			object-fit: cover;
 		}
 
 		.has-object-position-top > * {
 			object-position: top;
-		}
-
-		.isotope-filter .cell {
-			padding: 0.5rem;
 		}
 
 		.is-fixed {
@@ -518,6 +530,7 @@
             </div>
         </nav>
         <div class="container isotope-filter grid is-col-min-13 wow fadeInUp">
+            <div class="grid-sizer"></div>
             <div class="cell category-newsletter">
                 <div class="card is-clickable is-width-335 has-background-primary has-text-dark js-modal-trigger"
                      data-target="modal-newsletter-parents-families" aria-haspopup="true">
