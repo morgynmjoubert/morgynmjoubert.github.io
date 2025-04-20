@@ -156,34 +156,31 @@
        */
       document.addEventListener('DOMContentLoaded', () => {
 
-        // Get all "navbar-burger" elements
-        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-        // Add a click event on each of them
-        $navbarBurgers.forEach(el => {
+        // Listen for events on the nav toggle.
+        const navbarToggle = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        navbarToggle.forEach(el => {
           el.addEventListener('click', () => {
 
             // Get the target from the "data-target" attribute
             const target = el.dataset.target;
-            const $target = document.getElementById(target);
+            const targetElement = document.getElementById(target);
 
             // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
             el.classList.toggle('is-active');
-            $target.classList.toggle('is-active');
+            targetElement.classList.toggle('is-active');
             // el.classList.toggle('animate__animated animate__fadeInLeft');
-            $target.classList.toggle('animate__animated');
-            $target.classList.toggle('animate__fadeInLeft');
+            targetElement.classList.toggle('animate__animated');
+            targetElement.classList.toggle('animate__fadeInLeft');
 
           });
         });
 
-        const $navbarMenu = Array.prototype.slice.call(document.querySelectorAll('.navbar-menu'), 0);
-        $navbarMenu.forEach(el => {
+        // Close menu
+        const navbarMenu = Array.prototype.slice.call(document.querySelectorAll('.navbar-menu'), 0);
+        navbarMenu.forEach(el => {
           el.addEventListener('click', () => {
-            const target = el.dataset.target;
-            const $target = document.getElementById(target);
             el.classList.remove('is-active');
-            $target.classList.remove('is-active');
+            navbarToggle.forEach(el => el.classList.remove('is-active'));
           });
         });
 
