@@ -23,9 +23,8 @@
         .filters-button-group li.is-active [data-filter=".category-featured-story"] { color: hsl(208, 32%, 44%); border-bottom-color: hsl(208, 32%, 44%); }
 
         @media screen and (max-width: 768px) {
-            .filters-button-group { overflow: visible !important; }
-            .filters-button-group ul { flex-wrap: wrap !important; justify-content: center !important; border-bottom: none !important; }
-            .filters-button-group ul li a { border-bottom: 2px solid transparent; }
+            .filters-button-group { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+            .filters-button-group ul { flex-wrap: nowrap !important; justify-content: flex-start !important; }
         }
 
         /* Skills tags — distinct earthy hues, scoped so they don't affect the rest of the site */
@@ -694,6 +693,7 @@
                     <span class="tag is-medium is-info wow fadeInUp">Gutenberg Blocks</span>
                     <span class="tag is-medium is-success wow fadeInUp">Adobe Creative Suite</span>
                     <span class="tag is-medium is-success wow fadeInUp">Final Cut Pro</span>
+                    <span class="tag is-medium is-success wow fadeInUp">DaVinci Resolve</span>
                     <span class="tag is-medium is-success wow fadeInUp">Figma</span>
                     <span class="tag is-medium is-success wow fadeInUp">Canva</span>
                     <span class="tag is-medium is-success wow fadeInUp">Avid</span>
@@ -1159,6 +1159,29 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
                                    target="_blank">Figma file <i
                                         class="fa-solid fa-arrow-up-right-from-square is-size-7 is-size-7"></i></a>
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell category-featured-story">
+                <div aria-haspopup="true"
+                     class="card is-clickable is-width-335 has-background-warning has-text-dark js-modal-trigger"
+                     data-target="portfolio-modal">
+                    <header class="card-header">
+                        <p class="card-header-title has-text-dark">Ballet Company</p>
+                    </header>
+                    <div class="card-image">
+                        <figure class="image is-16by9 has-object-fit-cover has-object-position-top">
+                            <img loading="lazy" class="u-photo has-ratio"
+                                 src="./featured-ballet-company.jpg"
+                                 alt="Noreste Ballet Company at Northeastern"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p><a class="has-text-primary-invert"
+                                  href="https://news.northeastern.edu/2024/11/01/noreste-ballet-company/"
+                                  target="_blank">Live link <i class="fa-solid fa-arrow-up-right-from-square is-size-7"></i></a></p>
                         </div>
                     </div>
                 </div>
