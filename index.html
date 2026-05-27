@@ -49,6 +49,13 @@
         /* Mobile navbar - warm earthy instead of black */
         .navbar-menu { background-color: hsl(38, 28%, 96%) !important; }
         .navbar-menu .navbar-item { color: hsl(25, 18%, 18%) !important; }
+        /* Hover on desktop navbar items */
+        .navbar .navbar-item:hover,
+        .navbar .navbar-item:active,
+        .navbar .navbar-item.is-active {
+            background-color: hsl(15, 48%, 42%) !important;
+            color: hsl(35, 30%, 97%) !important;
+        }
 
         /* Earthy muted color palette — aligned to 6 named palette colors */
         :root {
@@ -256,6 +263,15 @@
           });
         });
 
+        // Highlight clicked nav item
+        document.querySelectorAll('.navbar-item[href]').forEach(link => {
+          link.addEventListener('click', () => {
+            document.querySelectorAll('.navbar-item[href]').forEach(l => l.classList.remove('is-active'));
+            link.classList.add('is-active');
+            setTimeout(() => link.classList.remove('is-active'), 600);
+          });
+        });
+
       });
     </script>
     <style>
@@ -351,7 +367,7 @@
                 <div class="navbar-menu is-fixed is-full-mobile has-top-padding-mobile"
                      id="navbarMenuHeroA">
                     <div class="navbar-end">
-                        <a class="navbar-item is-active" href="#top"> Home </a>
+                        <a class="navbar-item" href="#top"> Home </a>
                         <a class="navbar-item" href="#about"> About </a>
                         <a class="navbar-item" href="#experiences"> Experiences </a>
                         <a class="navbar-item" href="#portfolio"> Portfolio </a>
