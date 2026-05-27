@@ -23,7 +23,9 @@
         .filters-button-group li.is-active [data-filter=".category-featured-story"] { color: hsl(208, 32%, 44%); border-bottom-color: hsl(208, 32%, 44%); }
 
         @media screen and (max-width: 768px) {
-            .filters-button-group ul { flex-wrap: wrap; justify-content: center; }
+            .filters-button-group { overflow: visible !important; }
+            .filters-button-group ul { flex-wrap: wrap !important; justify-content: center !important; border-bottom: none !important; }
+            .filters-button-group ul li a { border-bottom: 2px solid transparent; }
         }
 
         /* Skills tags — distinct earthy hues, scoped so they don't affect the rest of the site */
@@ -234,6 +236,25 @@
             width: 33%;
             min-width: 304px;
             padding: 0.5rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .isotope-filter {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                height: auto !important;
+                width: 100% !important;
+            }
+            .isotope-filter .cell {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                width: 100% !important;
+                max-width: 360px;
+                transform: none !important;
+            }
+            .isotope-filter .grid-sizer { display: none; }
         }
     </style>
     <script>
