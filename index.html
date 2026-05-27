@@ -6,6 +6,19 @@
     <title>Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" rel="stylesheet">
     <style>
+        /* Portfolio filter tabs — distinct palette colors per category */
+        .filters-button-group [data-filter=".category-newsletter"] { color: hsl(15, 48%, 42%); }
+        .filters-button-group [data-filter=".category-newsletter"]:hover,
+        .filters-button-group li.is-active [data-filter=".category-newsletter"] { color: hsl(15, 48%, 42%); border-bottom-color: hsl(15, 48%, 42%); }
+
+        .filters-button-group [data-filter=".category-landing-page"] { color: hsl(150, 26%, 38%); }
+        .filters-button-group [data-filter=".category-landing-page"]:hover,
+        .filters-button-group li.is-active [data-filter=".category-landing-page"] { color: hsl(150, 26%, 38%); border-bottom-color: hsl(150, 26%, 38%); }
+
+        .filters-button-group [data-filter=".category-featured-story"] { color: hsl(208, 32%, 44%); }
+        .filters-button-group [data-filter=".category-featured-story"]:hover,
+        .filters-button-group li.is-active [data-filter=".category-featured-story"] { color: hsl(208, 32%, 44%); border-bottom-color: hsl(208, 32%, 44%); }
+
         /* Skills tags — distinct earthy hues, scoped so they don't affect the rest of the site */
         .tags .tag.is-primary { background-color: hsl(15, 48%, 38%);  color: hsl(15,  20%, 93%); }  /* Terracotta/rust   */
         .tags .tag.is-link    { background-color: hsl(42, 45%, 36%);  color: hsl(42,  20%, 93%); }  /* Caramel/amber     */
