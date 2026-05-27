@@ -6,6 +6,9 @@
     <title>Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" rel="stylesheet">
     <style>
+        /* Prevent any element from causing horizontal scroll on mobile */
+        html, body { overflow-x: hidden; max-width: 100%; }
+
         /* Portfolio filter tabs — distinct palette colors per category */
         .filters-button-group [data-filter=".category-newsletter"] { color: hsl(15, 48%, 42%); }
         .filters-button-group [data-filter=".category-newsletter"]:hover,
@@ -18,6 +21,10 @@
         .filters-button-group [data-filter=".category-featured-story"] { color: hsl(208, 32%, 44%); }
         .filters-button-group [data-filter=".category-featured-story"]:hover,
         .filters-button-group li.is-active [data-filter=".category-featured-story"] { color: hsl(208, 32%, 44%); border-bottom-color: hsl(208, 32%, 44%); }
+
+        @media screen and (max-width: 768px) {
+            .filters-button-group ul { flex-wrap: wrap; justify-content: center; }
+        }
 
         /* Skills tags — distinct earthy hues, scoped so they don't affect the rest of the site */
         .tags .tag.is-primary { background-color: hsl(15, 48%, 38%);  color: hsl(15,  20%, 93%); }  /* Terracotta/rust   */
