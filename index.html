@@ -884,15 +884,15 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
             </div>
             <div class="column is-narrow">
                 <div class="buttons has-addons">
-                    <button class="button is-small" id="rate-btn-low" onclick="setRateView('low')">Starting</button>
-                    <button class="button is-small" id="rate-btn-high" onclick="setRateView('high')">Full Package</button>
+                    <button class="button is-small" id="rate-btn-low" onclick="setRateView('low')">Low End</button>
+                    <button class="button is-small" id="rate-btn-high" onclick="setRateView('high')">High End</button>
                     <button class="button is-small is-primary" id="rate-btn-both" onclick="setRateView('both')">Compare Both</button>
                 </div>
             </div>
         </div>
         <div class="rate-legend mb-4 wow fadeInUp">
-            <span class="rate-legend-dot low"></span><small class="has-text-grey-light mr-5">Starting Rate</small>
-            <span class="rate-legend-dot high"></span><small class="has-text-grey-light">Full Package Rate</small>
+            <span class="rate-legend-dot low"></span><small class="has-text-grey-light mr-5">Low End</small>
+            <span class="rate-legend-dot high"></span><small class="has-text-grey-light">High End</small>
         </div>
         <div id="rates-chart" class="wow fadeInUp"></div>
         <div id="rate-detail" class="card has-background-grey-darker mt-4 p-5" style="display:none;">
@@ -981,7 +981,7 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
             barRow.className = 'rate-bar-row';
             const badge = document.createElement('span');
             badge.className = `rate-badge ${type}`;
-            badge.textContent = type === 'low' ? 'Starting' : 'Full Pkg';
+            badge.textContent = type === 'low' ? 'Low End' : 'High End';
             const track = document.createElement('div');
             track.className = 'rate-track';
             const fill = document.createElement('div');
@@ -1007,11 +1007,11 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
                 <p class="has-text-weight-bold is-size-5 mb-3">${item.service}${item.note ? ` <small class="has-text-grey is-size-6">(${item.note})</small>` : ''}</p>
                 <div class="columns">
                     <div class="column">
-                        <p class="has-text-primary has-text-weight-semibold mb-1">Starting — $${item.low.toLocaleString()}</p>
+                        <p class="has-text-primary has-text-weight-semibold mb-1">Low End — $${item.low.toLocaleString()}</p>
                         <p class="has-text-grey-light is-size-6">${item.lowDesc}</p>
                     </div>
                     <div class="column">
-                        <p class="has-text-warning has-text-weight-semibold mb-1">Full Package — $${item.high.toLocaleString()}</p>
+                        <p class="has-text-warning has-text-weight-semibold mb-1">High End — $${item.high.toLocaleString()}</p>
                         <p class="has-text-grey-light is-size-6">${item.highDesc}</p>
                     </div>
                 </div>`;
