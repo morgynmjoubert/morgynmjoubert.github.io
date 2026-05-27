@@ -14,6 +14,25 @@
         .tags .tag.is-warning { background-color: hsl(82, 28%, 36%);  color: hsl(82,  20%, 93%); }  /* Olive/moss        */
         .tags .tag.is-danger  { background-color: hsl(320, 22%, 38%); color: hsl(320, 20%, 93%); }  /* Dusty plum/mauve  */
 
+        /* Hero/home section - warm earthy background */
+        section#top { background-color: hsl(38, 28%, 96%); }
+
+        /* Warm earthy card backgrounds replacing dark grey */
+        .has-background-grey-darker { background-color: hsl(35, 22%, 91%) !important; }
+
+        /* Card text - warm dark brown */
+        .card-content p,
+        .card-content h3,
+        .card-content h4,
+        .card-content .title { color: hsl(25, 18%, 18%) !important; }
+
+        /* Keep date/accent colors visible on warm card */
+        .card-content small.has-text-info { color: hsl(210, 28%, 40%) !important; }
+
+        /* Mobile navbar - warm earthy instead of black */
+        .navbar-menu { background-color: hsl(38, 28%, 96%) !important; }
+        .navbar-menu .navbar-item { color: hsl(25, 18%, 18%); }
+
         /* Earthy muted color palette */
         :root {
             --bulma-primary-h: 20;
@@ -292,7 +311,7 @@
     </script>
 </head>
 <body>
-<section class="hero is-black is-fullheight" id="top">
+<section class="hero is-fullheight" id="top">
     <div class="hero-head">
         <nav class="navbar is-fixed-mobile ml-3">
             <div class="container">
