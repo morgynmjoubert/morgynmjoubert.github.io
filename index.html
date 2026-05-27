@@ -444,8 +444,8 @@
         .hero-layout {
             display: flex;
             width: 100%;
-            min-height: 100%;
-            align-items: stretch;
+            min-height: calc(100vh - 52px);
+            align-items: center;
         }
         .hero-text-panel {
             flex: 0 0 42%;
@@ -456,13 +456,13 @@
         }
         .hero-name-group {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.25rem;
             align-items: flex-start;
-            margin-bottom: 1.75rem;
+            margin-bottom: 1rem;
         }
         .hero-accent-line {
             width: 4px;
-            min-height: 115px;
+            min-height: 75px;
             flex-shrink: 0;
             background: hsl(15, 48%, 42%);
             border-radius: 2px;
@@ -474,7 +474,7 @@
             line-height: 1.06;
             color: hsl(25, 18%, 15%);
             letter-spacing: -0.01em;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
         .hero-role {
             font-size: 0.78rem;
@@ -488,7 +488,7 @@
             width: 48px;
             height: 2px;
             background: hsl(35, 22%, 78%);
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
         .hero-tagline {
             font-size: 0.93rem;
