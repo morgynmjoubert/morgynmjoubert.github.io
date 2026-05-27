@@ -408,9 +408,20 @@
             </div>
             <!-- Image panel -->
             <div class="hero-image-panel">
-                <figure class="hero-image-frame wow fadeInUp">
-                    <img class="u-photo" src="./37UNOM_0001_000_UM_Broadcasting_N29 (1).png" alt="Morgyn Joubert in production studio"/>
-                </figure>
+                <div class="hero-photo-cluster wow fadeInUp">
+                    <!-- Main large circle -->
+                    <div class="hero-circle hero-circle-main">
+                        <img class="u-photo" src="./37UNOM_0001_000_UM_Broadcasting_N29 (1).png" alt="Morgyn Joubert in production studio"/>
+                    </div>
+                    <!-- Small circle top-right -->
+                    <div class="hero-circle hero-circle-sm1">
+                        <img src="./hero-control-room.jpg" alt="Broadcast control room"/>
+                    </div>
+                    <!-- Small circle bottom-left -->
+                    <div class="hero-circle hero-circle-sm2">
+                        <img src="./hero-podcast-studio.jpg" alt="Podcast recording studio"/>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -491,27 +502,68 @@
         }
         .hero-links li a:hover { color: hsl(15, 48%, 42%); }
         .hero-links .icon { color: hsl(15, 48%, 42%); width: 18px; height: auto; flex-shrink: 0; }
+
+        /* Photo cluster */
         .hero-image-panel {
             flex: 1;
             display: flex;
             align-items: center;
+            justify-content: center;
             padding: 2.5rem 3rem 2.5rem 1rem;
         }
-        .hero-image-frame {
-            width: 100%;
-            height: 82vh;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 48px hsla(25, 30%, 20%, 0.13), 0 0 0 1px hsl(35, 22%, 82%);
-            margin: 0;
+        .hero-photo-cluster {
+            position: relative;
+            width: 430px;
+            height: 430px;
+            flex-shrink: 0;
         }
-        .hero-image-frame img {
+        .hero-circle {
+            position: absolute;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .hero-circle img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
             display: block;
         }
+        /* Main circle — centered in cluster */
+        .hero-circle-main {
+            width: 310px;
+            height: 310px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            box-shadow: 0 10px 50px hsla(25, 30%, 20%, 0.18);
+            border: 5px solid hsl(38, 28%, 96%);
+            outline: 2px solid hsl(35, 22%, 80%);
+        }
+        /* Small circle — top right, overlapping */
+        .hero-circle-sm1 {
+            width: 165px;
+            height: 165px;
+            top: 14px;
+            right: 8px;
+            z-index: 3;
+            box-shadow: 0 6px 28px hsla(25, 30%, 20%, 0.14);
+            border: 4px solid hsl(38, 28%, 96%);
+            outline: 2px solid hsl(15, 48%, 58%);
+        }
+        /* Small circle — bottom left, overlapping */
+        .hero-circle-sm2 {
+            width: 148px;
+            height: 148px;
+            bottom: 14px;
+            left: 8px;
+            z-index: 3;
+            box-shadow: 0 6px 28px hsla(25, 30%, 20%, 0.14);
+            border: 4px solid hsl(38, 28%, 96%);
+            outline: 2px solid hsl(42, 45%, 52%);
+        }
+
         @media screen and (max-width: 768px) {
             .hero-layout { flex-direction: column; }
             .hero-text-panel {
@@ -524,11 +576,30 @@
             .hero-tagline { max-width: 100%; }
             .hero-image-panel {
                 flex: none;
-                padding: 1rem;
+                padding: 2rem 1rem 1rem;
                 order: 1;
                 justify-content: center;
             }
-            .hero-image-frame { height: 44vh; border-radius: 10px; }
+            .hero-photo-cluster {
+                width: 270px;
+                height: 270px;
+            }
+            .hero-circle-main {
+                width: 194px;
+                height: 194px;
+            }
+            .hero-circle-sm1 {
+                width: 104px;
+                height: 104px;
+                top: 9px;
+                right: 5px;
+            }
+            .hero-circle-sm2 {
+                width: 93px;
+                height: 93px;
+                bottom: 9px;
+                left: 5px;
+            }
         }
     </style>
 </section>
