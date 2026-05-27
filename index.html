@@ -369,45 +369,168 @@
             </div>
         </nav>
     </div>
-    <div class="hero-body">
-        <div class="container h-card vcard">
-            <div class="columns is-centered">
-                <div class="column column is-four-fifths-widescreen is-two-thirds-fullhd">
-                    <div class="columns is-flex-mobile is-flex-direction-column-reverse-mobile">
-                        <div class="column">
-                            <p class="title is-size-2 has-text-weight-medium wow fadeInUp has-text-centered-mobile" style="white-space: nowrap;"><span class="p-given-name given-name">Morgyn</span> <span class="p-additional-name">M.</span> <span class="p-family-name family-name">Joubert</span></p>
-                            <p class="subtitle is-size-4 mt-1 has-text-weight-light p-job-title title wow fadeInUp has-text-centered-mobile" data-wow-delay="0.2s" style="white-space: nowrap;">Director of Multimedia Production</p>
-                            <ul class="mt-3 has-text-left has-text-centered-mobile">
-                                <li class="mt-2 wow fadeInUp" data-wow-delay="0.4s">
-                                    <a class="u-url url has-text-primary"
-                                       href="https://morgynmjoubert.github.io/"><span
-                                            class="icon"><i class="fas fa-home"></i></span>
-                                        morgynmjoubert.github.io</a>
-                                </li>
-                                <li class="mt-2 wow fadeInUp" data-wow-delay="0.6s">
-                                    <a class="u-email email has-text-primary"
-                                       href="mailto:me@example.com"><span
-                                            class="icon"><i class="fas fa-envelope"></i></span>
-                                        morgynmjoubert@hotmail.com</a>
-                                </li>
-                                <li class="mt-2 wow fadeInUp">
-                                    <a class="has-text-primary"
-                                       href="https://www.linkedin.com/in/morgyn-joubert-052665169"><span
-                                            class="p-nickname"><span class="icon"><i
-                                            class="fa-brands fa-linkedin-in"></i></span> LinkedIn</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="column is-three-fifths hero-image-column" style="padding-left: 3rem;">
-                           <figure class="wow fadeInUp" style="width: 100%; height: 70vh;">
-                                <img class="u-photo" src="./37UNOM_0001_000_UM_Broadcasting_N29 (1).png" style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 4px;"/>
-                            </figure>
-                        </div>
+    <div class="hero-body h-card vcard" style="padding: 0; align-items: stretch;">
+        <div class="hero-layout">
+            <!-- Text panel -->
+            <div class="hero-text-panel">
+                <div class="hero-name-group">
+                    <div class="hero-accent-line"></div>
+                    <div>
+                        <h1 class="hero-name">
+                            <span class="p-given-name">Morgyn</span> <span class="p-additional-name">M.</span><br>
+                            <span class="p-family-name">Joubert</span>
+                        </h1>
+                        <p class="hero-role p-job-title">Director of Multimedia Production</p>
                     </div>
                 </div>
+                <div class="hero-divider"></div>
+                <p class="hero-tagline">Multidisciplinary creative director &amp; digital strategist with 8+ years across multimedia production, content strategy, and data analytics.</p>
+                <ul class="hero-links">
+                    <li>
+                        <a class="u-url url" href="https://morgynmjoubert.github.io/">
+                            <span class="icon"><i class="fas fa-home"></i></span>
+                            <span>morgynmjoubert.github.io</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="u-email email" href="mailto:morgynmjoubert@hotmail.com">
+                            <span class="icon"><i class="fas fa-envelope"></i></span>
+                            <span>morgynmjoubert@hotmail.com</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/morgyn-joubert-052665169">
+                            <span class="icon"><i class="fa-brands fa-linkedin-in"></i></span>
+                            <span class="p-nickname">LinkedIn</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Image panel -->
+            <div class="hero-image-panel">
+                <figure class="hero-image-frame wow fadeInUp">
+                    <img class="u-photo" src="./37UNOM_0001_000_UM_Broadcasting_N29 (1).png" alt="Morgyn Joubert in production studio"/>
+                </figure>
             </div>
         </div>
     </div>
+    <style>
+        .hero-layout {
+            display: flex;
+            width: 100%;
+            min-height: 100%;
+            align-items: stretch;
+        }
+        .hero-text-panel {
+            flex: 0 0 42%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 2.5rem 5rem 7rem;
+        }
+        .hero-name-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1.75rem;
+        }
+        .hero-accent-line {
+            width: 4px;
+            min-height: 115px;
+            flex-shrink: 0;
+            background: hsl(15, 48%, 42%);
+            border-radius: 2px;
+            margin-top: 6px;
+        }
+        .hero-name {
+            font-size: clamp(2.4rem, 3.5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.06;
+            color: hsl(25, 18%, 15%);
+            letter-spacing: -0.01em;
+            margin-bottom: 0.75rem;
+        }
+        .hero-role {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: hsl(15, 48%, 42%);
+            font-weight: 600;
+            margin: 0;
+        }
+        .hero-divider {
+            width: 48px;
+            height: 2px;
+            background: hsl(35, 22%, 78%);
+            margin-bottom: 1.25rem;
+        }
+        .hero-tagline {
+            font-size: 0.93rem;
+            color: hsl(25, 12%, 42%);
+            font-weight: 400;
+            margin-bottom: 2.25rem;
+            line-height: 1.75;
+            max-width: 340px;
+        }
+        .hero-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+        .hero-links li a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.88rem;
+            color: hsl(25, 15%, 28%);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .hero-links li a:hover { color: hsl(15, 48%, 42%); }
+        .hero-links .icon { color: hsl(15, 48%, 42%); width: 18px; height: auto; flex-shrink: 0; }
+        .hero-image-panel {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 2.5rem 3rem 2.5rem 1rem;
+        }
+        .hero-image-frame {
+            width: 100%;
+            height: 82vh;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 48px hsla(25, 30%, 20%, 0.13), 0 0 0 1px hsl(35, 22%, 82%);
+            margin: 0;
+        }
+        .hero-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        @media screen and (max-width: 768px) {
+            .hero-layout { flex-direction: column; }
+            .hero-text-panel {
+                flex: none;
+                padding: 2.5rem 1.5rem 2.5rem 2rem;
+                order: 2;
+            }
+            .hero-accent-line { min-height: 80px; }
+            .hero-name { font-size: 2.3rem; }
+            .hero-tagline { max-width: 100%; }
+            .hero-image-panel {
+                flex: none;
+                padding: 1rem;
+                order: 1;
+                justify-content: center;
+            }
+            .hero-image-frame { height: 44vh; border-radius: 10px; }
+        }
+    </style>
 </section>
 <section class="section" id="about">
     <div class="container">
