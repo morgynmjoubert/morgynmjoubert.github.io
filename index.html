@@ -33,9 +33,9 @@
         /* Click-to-preview lightbox for featured story cards */
         [data-scroll-preview] { cursor: pointer; }
 
-        /* "CLICK TO SCROLL PREVIEW" overlay on every portfolio card image */
-        .isotope-filter .card-image { position: relative; }
-        .isotope-filter .card-image::after {
+        /* "CLICK TO SCROLL PREVIEW" overlay — only on cards with actual lightbox behaviour */
+        [data-scroll-preview] .card-image { position: relative; }
+        [data-scroll-preview] .card-image::after {
             content: '↕  CLICK TO SCROLL PREVIEW';
             position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
             padding: 2rem 0.5rem 0.5rem;
