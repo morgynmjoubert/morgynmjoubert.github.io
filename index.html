@@ -26,6 +26,10 @@
         .filters-button-group [data-filter=".category-course-design"]:hover,
         .filters-button-group li.is-active [data-filter=".category-course-design"] { color: hsl(270, 22%, 44%); border-bottom-color: hsl(270, 22%, 44%); }
 
+        /* Scrollable full-page screenshot preview */
+        .card-scroll-preview { height: 210px; overflow-y: auto; overflow-x: hidden; cursor: ns-resize; }
+        .card-scroll-preview img { width: 100%; height: auto; display: block; }
+
         @media screen and (max-width: 768px) {
             .filters-button-group { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
             .filters-button-group ul { flex-wrap: nowrap !important; justify-content: flex-start !important; }
@@ -1120,13 +1124,13 @@ and public officials. Managed the scheduling and development of news segments, c
                      class="card is-clickable is-width-335 has-background-info has-text-dark js-modal-trigger"
                      data-target="portfolio-modal">
                     <header class="card-header">
-                        <p class="card-header-title has-text-dark">Faculty & Staff</p>
+                        <p class="card-header-title has-text-dark">Faculty & Staff News Hub</p>
                     </header>
                     <div class="card-image">
-                        <figure class="image is-16by9 has-object-fit-cover has-object-position-top">
-                            <img loading="lazy" class="u-photo has-ratio"
-                                 src="./landing-faculty-staff.jpg" alt="NGN Faculty & Staff landing page"/>
-                        </figure>
+                        <div class="card-scroll-preview">
+                            <img loading="lazy"
+                                 src="./landing-faculty-staff-full.jpg" alt="Faculty & Staff News Hub landing page screenshot"/>
+                        </div>
                     </div>
                     <div class="card-content">
                         <div class="content">
