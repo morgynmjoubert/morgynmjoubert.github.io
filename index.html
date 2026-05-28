@@ -1267,7 +1267,7 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
         <div class="columns is-vcentered mb-2 wow fadeInUp">
             <div class="column">
                 <h2 class="title mb-1">Freelance Services & Rates</h2>
-                <p class="has-text-grey-dark is-size-6">Project & hourly pricing — click any row to see what's included</p>
+                <p class="has-text-grey-dark is-size-6">Project & hourly pricing — click any row to expand details</p>
             </div>
             <div class="column is-narrow">
                 <div class="buttons has-addons">
@@ -1282,9 +1282,6 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
             <span class="rate-legend-dot high"></span><small class="has-text-grey-dark">High End</small>
         </div>
         <div id="rates-chart" class="wow fadeInUp"></div>
-        <div id="rate-detail" class="card has-background-grey-darker mt-4 p-5" style="display:none;">
-            <div id="rate-detail-content"></div>
-        </div>
     </div>
     <style>
         .rate-legend { display: flex; align-items: center; gap: 0.4rem; }
@@ -1311,10 +1308,29 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
         .rate-fill.low { background: hsl(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-l)); }
         .rate-fill.high { background: hsl(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-l)); }
         .rate-val { width: 52px; font-size: 0.78rem; text-align: right; color: #666; flex-shrink: 0; }
+        .rate-row.is-active { border-bottom-color: transparent; border-radius: 6px 6px 0 0; }
+        .rate-accordion {
+            max-height: 0; opacity: 0; overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.2s ease;
+            background: hsl(38, 20%, 93%);
+            border-left: 3px solid hsl(15, 48%, 42%);
+            border-bottom: 1px solid hsl(0,0%,85%);
+            border-radius: 0 0 6px 6px;
+            margin-bottom: 2px;
+        }
+        .rate-accordion.is-open { max-height: 200px; opacity: 1; }
+        .rate-accordion-inner { padding: 0.85rem 1rem 0.85rem 1.25rem; display: flex; gap: 2rem; flex-wrap: wrap; }
+        .rate-accordion-col { flex: 1; min-width: 160px; }
+        .rate-acc-title { font-weight: 600; font-size: 0.875rem; margin-bottom: 0.25rem; }
+        .rate-acc-title.low { color: hsl(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-l)); }
+        .rate-acc-title.high { color: hsl(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-l)); }
+        .rate-acc-desc { font-size: 0.8rem; color: #666; }
         @media screen and (max-width: 768px) {
             .rate-label { width: 110px; font-size: 0.75rem; }
             .rate-badge { display: none; }
             .rate-val { width: 44px; font-size: 0.72rem; }
+            .rate-accordion.is-open { max-height: 300px; }
+            .rate-accordion-inner { flex-direction: column; gap: 0.75rem; }
         }
     </style>
     <script>
@@ -1344,6 +1360,7 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
             const chart = document.getElementById('rates-chart');
             chart.innerHTML = '';
             ratesData.forEach((item, idx) => {
+                // Row
                 const row = document.createElement('div');
                 row.className = 'rate-row';
                 const label = document.createElement('div');
@@ -1355,8 +1372,24 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
                 if (rateView === 'high' || rateView === 'both') barsWrap.appendChild(makeBar('high', item.high));
                 row.appendChild(label);
                 row.appendChild(barsWrap);
-                row.addEventListener('click', () => showRateDetail(idx, row));
+                row.addEventListener('click', () => toggleRateDetail(idx));
                 chart.appendChild(row);
+
+                // Accordion panel (pre-rendered, collapsed)
+                const panel = document.createElement('div');
+                panel.className = 'rate-accordion';
+                panel.innerHTML = `<div class="rate-accordion-inner">
+                    <div class="rate-accordion-col">
+                        <p class="rate-acc-title low">Low End — $${item.low.toLocaleString()}</p>
+                        <p class="rate-acc-desc">${item.lowDesc}</p>
+                    </div>
+                    <div class="rate-accordion-col">
+                        <p class="rate-acc-title high">High End — $${item.high.toLocaleString()}</p>
+                        <p class="rate-acc-desc">${item.highDesc}</p>
+                    </div>
+                </div>`;
+                chart.appendChild(panel);
+
                 setTimeout(() => {
                     row.querySelectorAll('.rate-fill').forEach(f => { f.style.width = f.dataset.target; });
                 }, 40 + idx * 55);
@@ -1385,24 +1418,18 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
             return barRow;
         }
 
-        function showRateDetail(idx, rowEl) {
-            const item = ratesData[idx];
-            document.querySelectorAll('.rate-row').forEach(r => r.classList.remove('is-active'));
-            rowEl.classList.add('is-active');
-            const detail = document.getElementById('rate-detail');
-            document.getElementById('rate-detail-content').innerHTML = `
-                <p class="has-text-weight-bold is-size-5 mb-3">${item.service}${item.note ? ` <small class="has-text-grey is-size-6">(${item.note})</small>` : ''}</p>
-                <div class="columns">
-                    <div class="column">
-                        <p class="has-text-primary has-text-weight-semibold mb-1">Low End — $${item.low.toLocaleString()}</p>
-                        <p class="has-text-grey-light is-size-6">${item.lowDesc}</p>
-                    </div>
-                    <div class="column">
-                        <p class="has-text-warning has-text-weight-semibold mb-1">High End — $${item.high.toLocaleString()}</p>
-                        <p class="has-text-grey-light is-size-6">${item.highDesc}</p>
-                    </div>
-                </div>`;
-            detail.style.display = 'block';
+        function toggleRateDetail(idx) {
+            const rows = document.querySelectorAll('.rate-row');
+            const panels = document.querySelectorAll('.rate-accordion');
+            const wasActive = rows[idx].classList.contains('is-active');
+            // Close all
+            rows.forEach(r => r.classList.remove('is-active'));
+            panels.forEach(p => p.classList.remove('is-open'));
+            // Open the clicked one (unless it was already open — toggle off)
+            if (!wasActive) {
+                rows[idx].classList.add('is-active');
+                panels[idx].classList.add('is-open');
+            }
         }
 
         document.addEventListener('DOMContentLoaded', renderRateChart);
