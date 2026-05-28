@@ -9,6 +9,9 @@
         /* Prevent any element from causing horizontal scroll on mobile */
         html, body { overflow-x: hidden; max-width: 100%; }
 
+        /* Offset anchor scroll by navbar height so section titles aren't hidden behind it */
+        html { scroll-padding-top: 64px; scroll-behavior: smooth; }
+
         /* Portfolio filter tabs — distinct palette colors per category */
         .filters-button-group [data-filter=".category-newsletter"] { color: hsl(15, 48%, 42%); }
         .filters-button-group [data-filter=".category-newsletter"]:hover,
