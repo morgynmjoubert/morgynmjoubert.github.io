@@ -26,9 +26,39 @@
         .filters-button-group [data-filter=".category-course-design"]:hover,
         .filters-button-group li.is-active [data-filter=".category-course-design"] { color: hsl(270, 22%, 44%); border-bottom-color: hsl(270, 22%, 44%); }
 
-        /* Scrollable full-page screenshot preview */
+        /* Scrollable full-page screenshot preview (Faculty & Staff card) */
         .card-scroll-preview { height: 210px; overflow-y: auto; overflow-x: hidden; cursor: ns-resize; }
         .card-scroll-preview img { width: 100%; height: auto; display: block; }
+
+        /* Click-to-preview lightbox for featured story cards */
+        [data-scroll-preview] { cursor: pointer; }
+        [data-scroll-preview] .card-image { position: relative; }
+        [data-scroll-preview] .card-image::after {
+            content: '\f00e  Click to scroll preview';
+            font-family: 'Font Awesome 6 Free', sans-serif;
+            font-weight: 900;
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 1.5rem 0.5rem 0.45rem;
+            background: linear-gradient(transparent, rgba(20,15,10,0.55));
+            color: rgba(255,255,255,0.9);
+            font-size: 0.7rem; text-align: center; letter-spacing: 0.03em;
+            pointer-events: none;
+        }
+        .scroll-lightbox {
+            position: fixed; inset: 0;
+            background: rgba(20, 14, 8, 0.88);
+            z-index: 9999; display: flex;
+            align-items: flex-start; justify-content: center;
+            padding: 1.5rem 1rem; overflow-y: auto;
+        }
+        .scroll-lightbox-inner { width: 100%; max-width: 860px; position: relative; }
+        .scroll-lightbox-close {
+            position: sticky; top: 0; float: right; margin-bottom: 0.5rem;
+            background: hsl(15,48%,42%); color: white; border: none; border-radius: 50%;
+            width: 38px; height: 38px; font-size: 1.1rem; cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
+        }
+        .scroll-lightbox-inner img { width: 100%; height: auto; display: block; border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
 
         @media screen and (max-width: 768px) {
             .filters-button-group { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
@@ -1195,18 +1225,18 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
                 </div>
             </div>
             <div class="cell category-featured-story">
-                <div aria-haspopup="true"
-                     class="card is-clickable is-width-335 has-background-warning has-text-dark js-modal-trigger"
-                     data-target="portfolio-modal">
+                <div class="card is-clickable is-width-335 has-background-warning has-text-dark"
+                     data-scroll-preview="./featured-husky-mascot.jpg">
                     <header class="card-header">
                         <p class="card-header-title has-text-dark">Paws the Husky Mascot</p>
                     </header>
                     <div class="card-image">
-                        <div class="card-scroll-preview">
-                            <img loading="lazy"
+                        <figure class="image is-16by9">
+                            <img loading="lazy" class="u-photo has-ratio"
+                                 style="object-fit: cover; object-position: top;"
                                  src="./featured-husky-mascot.jpg"
                                  alt="Northeastern Husky mascot Paws article screenshot"/>
-                        </div>
+                        </figure>
                     </div>
                     <div class="card-content">
                         <div class="content">
@@ -1218,18 +1248,18 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
                 </div>
             </div>
             <div class="cell category-featured-story">
-                <div aria-haspopup="true"
-                     class="card is-clickable is-width-335 has-background-warning has-text-dark js-modal-trigger"
-                     data-target="portfolio-modal">
+                <div class="card is-clickable is-width-335 has-background-warning has-text-dark"
+                     data-scroll-preview="./featured-arctic-ship-residency.jpg">
                     <header class="card-header">
                         <p class="card-header-title has-text-dark">Arctic Ship Residency</p>
                     </header>
                     <div class="card-image">
-                        <div class="card-scroll-preview">
-                            <img loading="lazy"
+                        <figure class="image is-16by9">
+                            <img loading="lazy" class="u-photo has-ratio"
+                                 style="object-fit: cover; object-position: top;"
                                  src="./featured-arctic-ship-residency.jpg"
                                  alt="Arctic ship residency article screenshot"/>
-                        </div>
+                        </figure>
                     </div>
                     <div class="card-content">
                         <div class="content">
@@ -1241,18 +1271,18 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
                 </div>
             </div>
             <div class="cell category-featured-story">
-                <div aria-haspopup="true"
-                     class="card is-clickable is-width-335 has-background-warning has-text-dark js-modal-trigger"
-                     data-target="portfolio-modal">
+                <div class="card is-clickable is-width-335 has-background-warning has-text-dark"
+                     data-scroll-preview="./featured-flying-bat-robot.jpg">
                     <header class="card-header">
                         <p class="card-header-title has-text-dark">Flying Bat Robot</p>
                     </header>
                     <div class="card-image">
-                        <div class="card-scroll-preview">
-                            <img loading="lazy"
+                        <figure class="image is-16by9">
+                            <img loading="lazy" class="u-photo has-ratio"
+                                 style="object-fit: cover; object-position: top;"
                                  src="./featured-flying-bat-robot.jpg"
                                  alt="Bat-inspired flying robot article screenshot"/>
-                        </div>
+                        </figure>
                     </div>
                     <div class="card-content">
                         <div class="content">
@@ -1676,5 +1706,29 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
         </div>
     </div>
 </footer>
+<script>
+    // Click-to-preview lightbox for cards with data-scroll-preview
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[data-scroll-preview]').forEach(function (card) {
+            card.addEventListener('click', function (e) {
+                if (e.target.closest('a')) return; // let live-link clicks pass through
+                var src = card.dataset.scrollPreview;
+                var lb = document.createElement('div');
+                lb.className = 'scroll-lightbox';
+                lb.innerHTML =
+                    '<div class="scroll-lightbox-inner">' +
+                        '<button class="scroll-lightbox-close" aria-label="Close">&#x2715;</button>' +
+                        '<img src="' + src + '" alt="Article preview"/>' +
+                    '</div>';
+                document.body.appendChild(lb);
+                lb.querySelector('.scroll-lightbox-close').addEventListener('click', function () { lb.remove(); });
+                lb.addEventListener('click', function (e) { if (e.target === lb) lb.remove(); });
+                // Close on Escape key
+                function onKey(e) { if (e.key === 'Escape') { lb.remove(); document.removeEventListener('keydown', onKey); } }
+                document.addEventListener('keydown', onKey);
+            });
+        });
+    });
+</script>
 </body>
 </html>
