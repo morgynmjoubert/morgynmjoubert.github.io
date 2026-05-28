@@ -34,14 +34,13 @@
         [data-scroll-preview] { cursor: pointer; }
         [data-scroll-preview] .card-image { position: relative; }
         [data-scroll-preview] .card-image::after {
-            content: '\f00e  Click to scroll preview';
-            font-family: 'Font Awesome 6 Free', sans-serif;
-            font-weight: 900;
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: 1.5rem 0.5rem 0.45rem;
-            background: linear-gradient(transparent, rgba(20,15,10,0.55));
-            color: rgba(255,255,255,0.9);
-            font-size: 0.7rem; text-align: center; letter-spacing: 0.03em;
+            content: '↕  CLICK TO SCROLL PREVIEW';
+            position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+            padding: 2rem 0.5rem 0.5rem;
+            background: linear-gradient(transparent, rgba(20,15,10,0.62));
+            color: rgba(255,255,255,0.95);
+            font-size: 0.72rem; font-weight: 700;
+            text-align: center; letter-spacing: 0.08em; text-transform: uppercase;
             pointer-events: none;
         }
         .scroll-lightbox {
