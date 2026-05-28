@@ -33,9 +33,9 @@
         /* Click-to-preview lightbox for featured story cards */
         [data-scroll-preview] { cursor: pointer; }
 
-        /* "CLICK TO SCROLL PREVIEW" overlay — only on cards with actual lightbox behaviour */
-        [data-scroll-preview] .card-image { position: relative; }
-        [data-scroll-preview] .card-image::after {
+        /* "CLICK TO SCROLL PREVIEW" overlay on all portfolio card images */
+        .isotope-filter .card-image { position: relative; }
+        .isotope-filter .card-image::after {
             content: '↕  CLICK TO SCROLL PREVIEW';
             position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
             padding: 2rem 0.5rem 0.5rem;
@@ -45,6 +45,8 @@
             text-align: center; letter-spacing: 0.08em; text-transform: uppercase;
             pointer-events: none;
         }
+        /* Suppress overlay on static Figma cards with no scroll interaction */
+        .no-preview-overlay::after { display: none; }
         .scroll-lightbox {
             position: fixed; inset: 0;
             background: rgba(20, 14, 8, 0.88);
@@ -1325,7 +1327,7 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
                     <header class="card-header">
                         <p class="card-header-title has-text-dark">UOnline Lookbook</p>
                     </header>
-                    <div class="card-image">
+                    <div class="card-image no-preview-overlay">
                         <figure class="image is-3by1 has-object-fit-cover has-object-position-center">
                             <img loading="lazy" class="u-photo has-ratio"
                                  src="./newsletter-uonline-lookbook.png"
@@ -1375,7 +1377,7 @@ s?node-id=94-385&t=ze76iOtvWSMGI3of-1"
                     <header class="card-header" style="background-color: hsl(270, 18%, 93%);">
                         <p class="card-header-title has-text-dark">Course Banners</p>
                     </header>
-                    <div class="card-image">
+                    <div class="card-image no-preview-overlay">
                         <figure class="image is-3by1 has-object-fit-cover has-object-position-center">
                             <img loading="lazy" class="u-photo has-ratio"
                                  src="./course-banners-dcie.png"
